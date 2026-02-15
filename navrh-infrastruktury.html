@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="sk">
+<head>
+    <base href="wovtech-web/">
+<script>
+    (function () {
+      var repo = "wovtech-web";
+      var p = window.location.pathname || "/";
+      var base = "/";
+      if (p.indexOf("/" + repo + "/") === 0) base = "/" + repo + "/";
+      var el = document.getElementById("baseHref");
+      if (el) el.setAttribute("href", base);
+    })();
+  </script>
+<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Návrh infraštruktúry | WOV Tech</title>
+  <meta name="description" content="Návrh IT infraštruktúry (HLD/LLD), operability (monitoring/logy/backup), bezpečnosť a prevádzkovateľnosť pre firmy na Slovensku." />
+  <meta name="robots" content="index,follow,noarchive" />
+  <link rel="canonical" href="https://wovtech.sk/navrh-infrastruktury.html" />
+  <meta property="og:title" content="Návrh infraštruktúry | WOV Tech" />
+  <meta property="og:description" content="Návrh IT infraštruktúry (HLD/LLD), operability (monitoring/logy/backup), bezpečnosť a prevádzkovateľnosť pre firmy na Slovensku." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://wovtech.sk/navrh-infrastruktury.html" />
+  <meta name="theme-color" content="#0b1220" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#content">Preskočiť na obsah</a>
+
+<header class="header">
+  <base href="wovtech-web/">
+<div class="container">
+    <nav class="nav" aria-label="Hlavná navigácia">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/img/logo-mark.png" alt="WOV Tech logo" width="36" height="36" loading="lazy" />
+        <span>WOV Tech <span class="sub">Návrh infra • DDI • Cloud Ops (SK)</span></span>
+      </a>
+      <div class="menu">
+        <a href="navrh-infrastruktury.html">Návrh infra</a>
+        <a href="sluzby.html">Služby</a>
+        <a href="clanky.html">Články</a>
+        <a href="o-nas.html">O nás</a>
+        <a class="cta" href="kontakt.html">Konzultácia</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="content">
+
+<section class="hero">
+  <div class="container">
+    <div class="card pad-lg">
+      <h1>Návrh infraštruktúry</h1>
+      <p>
+        Väčšina infra funguje – až kým sa niečo nepokazí. Problém nebýva technológia, ale
+        <b>chýbajúci návrh, rozhodnutia a kontext</b>.
+      </p>
+      <p>
+        Pomáham navrhnúť infra tak, aby bola <b>prevádzkovateľná</b>, <b>bezpečná</b> a <b>zrozumiteľná</b>
+        pre tím aj management.
+      </p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap">
+        <a class="cta" href="kontakt.html">Nezáväzná konzultácia</a>
+        <a class="cta secondary" href="navrh-infrastruktury/co-si-premysliet/monitoring-vs-logy.html">Čo si premyslieť</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container two-col">
+    <div class="card pad">
+      <h2>Pre koho je návrh</h2>
+      <ul class="list">
+        <li>infra „funguje“, ale chýba istota (dokumentácia, runbooky, vlastníctvo)</li>
+        <li>plánuje sa zmena: cloud/hybrid, migrácia, konsolidácia</li>
+        <li>incidenty sa riešia ad-hoc a bez jasných postupov</li>
+      </ul>
+    </div>
+    <div class="card pad">
+      <h2>Čo je výstup</h2>
+      <ul class="list">
+        <li>HLD/LLD + diagramy a závislosti</li>
+        <li>riziká, kompromisy a odporúčania (čo teraz vs neskôr)</li>
+        <li>návrh operability: monitoring, logy, backup, incident/change</li>
+      </ul>
+      <div class="hr"></div>
+      <p class="notice">Návrh je rozhodovací dokument – nie vendor pitch.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="card pad">
+      <h2>Ako spolupráca prebieha</h2>
+      <div class="grid">
+        <div class="service"><h3>1) Rýchly audit</h3><p>Pochopenie prostredia, problémov a limitov (ľudia, SLA, náklady).</p></div>
+        <div class="service"><h3>2) Návrh infra</h3><p>Rozhodnutia, trade-offy, bezpečnosť, dostupnosť a prevádzkovateľnosť.</p></div>
+        <div class="service"><h3>3) Stabilizácia</h3><p>Voliteľne: implementácia krokov, ktoré znížia riziko a incidenty.</p></div>
+      </div>
+      <div class="hr"></div>
+      <p>Často pokryté oblasti:</p>
+      <div class="badges">
+        <span class="badge"><b>DDI</b> DNS/DHCP/IPAM</span>
+        <span class="badge"><b>NTP</b> časová infra</span>
+        <span class="badge"><b>Cloud</b> AWS/Azure/GCP</span>
+        <span class="badge"><b>Monitoring</b> server/device</span>
+        <span class="badge"><b>Logy</b> log management</span>
+        <span class="badge"><b>Backup</b> obnova</span>
+        <span class="badge"><b>IAM</b> prístupy</span>
+        <span class="badge"><b>Network</b> segmentácia</span>
+      </div>
+      <div class="hr"></div>
+      <a class="cta" href="kontakt.html">Napísať</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:10px">
+        <img class="brand-logo" src="assets/img/logo-mark.png" alt="WOV Tech logo" width="36" height="36" loading="lazy" />
+        <span>WOV Tech s. r. o.<span class="sub">Návrh infra • Prevádzkovateľnosť • Stabilizácia</span></span>
+      </div>
+      <small>© 2026 WOV Tech s. r. o. • IČO 57413878 • DIČ 2122704034 • IČ DPH SK2122704034</small>
+      <div style="margin-top:8px; display:flex; gap:10px; flex-wrap:wrap">
+        <a href="ochrana-osobnych-udajov.html">Ochrana osobných údajov</a>
+        <a href="obchodne-podmienky.html">Obchodné podmienky</a>
+      </div>
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; align-items:flex-start">
+      <a href="navrh-infrastruktury.html">Návrh infra</a>
+      <a href="sluzby.html">Služby</a>
+      <a href="kontakt.html">Kontakt</a>
+    </div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Organization", "name": "WOV Tech s. r. o.", "url": "https://wovtech.sk", "email": "kontakt@wovtech.sk", "areaServed": ["SK"], "description": "Návrh a stabilizácia IT infraštruktúry: DDI (DNS/DHCP/IPAM), NTP, cloud (AWS/Azure/GCP), monitoring infra, log management a zálohovanie."}
+</script>
+</body>
+</html>
