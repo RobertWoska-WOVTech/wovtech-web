@@ -48,7 +48,13 @@ small{color:var(--muted)}
 .hero{padding: 44px 0 22px;}
 .hero-grid{display:grid; grid-template-columns: 1.2fr .8fr; gap: 18px;}
 @media (max-width: 900px){.hero-grid{grid-template-columns:1fr}}
-.card{background: rgba(15,26,46,.75); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);}
+/* nech je background cez karty cítiť */
+.card{
+  background: rgba(10, 16, 28, 0.55) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
 .card.pad{padding: 18px}
 .card.pad-lg{padding: 22px}
 .badges{display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px;}
@@ -129,37 +135,33 @@ body::before{
 
 .hero{
   position: relative;
-  isolation: isolate; /* aby pseudo-elementy nepresahovali */
+  isolation: isolate;
   overflow: hidden;
+  padding-top: 90px;
+  padding-bottom: 70px;
 }
 
-/* samotná fotka + jemné úpravy cez pseudo-element */
+/* fotka: viac kontrastu, menej stmavenia */
 .hero::before{
   content:"";
   position:absolute;
-  inset:-2%;                 /* mierne presah, aby blur neodhalil okraje */
-  background-image: url("../img/hero-datacenter.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  /* tu je pointa: z fotky spravíme "ambient infra" ale aby bolo VIDNO racky */
-  filter: blur(0.8px) saturate(1.15) contrast(1.15) brightness(0.85);
-  opacity: 0.55;             /* zvýrazní foto oproti tomu, čo máš teraz */
-  transform: scale(1.03);
+  inset:0;
+  background: url("../img/hero-datacenter.png") center/cover no-repeat;
+  filter: contrast(1.35) saturate(1.20) brightness(1.05);
+  opacity: 0.85;
   z-index: -2;
 }
 
-/* vrstvy overlayov: vignette + modré akcenty + čitateľnosť */
+/* overlay: slabší, len aby text ostal čitateľný */
 .hero::after{
   content:"";
   position:absolute;
   inset:0;
-  background:
-    radial-gradient(1200px 650px at 25% 20%, rgba(56,189,248,0.16), transparent 60%),
-    radial-gradient(900px 520px at 80% 35%, rgba(59,130,246,0.12), transparent 65%),
-    radial-gradient(1100px 700px at 50% 110%, rgba(11,18,32,0.98), rgba(11,18,32,0.65) 55%, rgba(11,18,32,0.92)),
-    linear-gradient(180deg, rgba(11,18,32,0.45), rgba(11,18,32,0.88));
+  background: linear-gradient(
+    180deg,
+    rgba(7, 10, 18, 0.35),
+    rgba(7, 10, 18, 0.75)
+  );
   z-index: -1;
 }
 
