@@ -124,3 +124,62 @@ body::before{
   object-fit:contain;
   border-radius:10px;
 }
+
+/* ===== HERO BACKGROUND vylepšenie (enterprise datacenter) ===== */
+
+.hero{
+  position: relative;
+  isolation: isolate; /* aby pseudo-elementy nepresahovali */
+  overflow: hidden;
+}
+
+/* samotná fotka + jemné úpravy cez pseudo-element */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:-2%;                 /* mierne presah, aby blur neodhalil okraje */
+  background-image: url("../img/hero-datacenter.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* tu je pointa: z fotky spravíme "ambient infra" ale aby bolo VIDNO racky */
+  filter: blur(0.8px) saturate(1.15) contrast(1.15) brightness(0.85);
+  opacity: 0.55;             /* zvýrazní foto oproti tomu, čo máš teraz */
+  transform: scale(1.03);
+  z-index: -2;
+}
+
+/* vrstvy overlayov: vignette + modré akcenty + čitateľnosť */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(1200px 650px at 25% 20%, rgba(56,189,248,0.16), transparent 60%),
+    radial-gradient(900px 520px at 80% 35%, rgba(59,130,246,0.12), transparent 65%),
+    radial-gradient(1100px 700px at 50% 110%, rgba(11,18,32,0.98), rgba(11,18,32,0.65) 55%, rgba(11,18,32,0.92)),
+    linear-gradient(180deg, rgba(11,18,32,0.45), rgba(11,18,32,0.88));
+  z-index: -1;
+}
+
+/* jemný grain (bez obrázka, čisté CSS) */
+.hero .grain{
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.10;
+  mix-blend-mode: overlay;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 2px, transparent 4px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 2px, transparent 6px);
+}
+
+/* obsah hero držme nad pozadím */
+.hero .container,
+.hero .hero-grid{
+  position: relative;
+  z-index: 1;
+}
+
