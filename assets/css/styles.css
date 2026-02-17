@@ -1,15 +1,17 @@
 :root{
   /* Lightened dark theme */
-  --bg:#121a2a;                 /* celkové pozadie (svetlejšie) */
-  --bg2:#162032;                /* sekundárne pozadie */
-  --card:rgba(255,255,255,.06); /* karty viac "glass" a menej black */
+  --bg:#121a2a;
+  --bg2:#162032;
+
+  --card:rgba(255,255,255,.10);   /* <-- bolo .06 */
+
   --text:#f3f6ff;
   --muted:rgba(243,246,255,.74);
-  --line:rgba(255,255,255,.14);
+  --muted2:rgba(243,246,255,.78); /* <-- DOPLNIŤ, chýbalo */
 
+  --line:rgba(255,255,255,.14);
   --accent:#8bb6ff;
   --accent2:#76f7d0;
-
   --shadow: 0 10px 30px rgba(0,0,0,.28);
   --radius:18px;
   --max:1120px;
@@ -102,15 +104,12 @@ small{color:var(--muted2)}
 
 /* ľahší overlay aby bolo stále čitateľné */
 .hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
+  /* ... */
   background: linear-gradient(
     180deg,
     rgba(8, 12, 20, 0.18),
-    rgba(8, 12, 20, 0.55)
+    rgba(8, 12, 20, 0.42) /* <-- bolo 0.55 */
   );
-  z-index: -1;
 }
 
 /* jemný grain */
