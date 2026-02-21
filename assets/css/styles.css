@@ -239,3 +239,96 @@ small{color:var(--muted)}
   margin-top:8px;
   color: rgba(238,244,255,.85);
 }
+
+/* =================================================
+   OVERRIDES: VARIANTA A (header svetlejší, ale nie biely) + tmavý footer
+================================================= */
+
+/* HEADER: menej bledý, viac "enterprise" */
+.header{
+  background: linear-gradient(180deg,
+    rgba(230,235,242,.96),
+    rgba(220,226,235,.92)
+  ) !important;
+  border-bottom: 1px solid rgba(15,23,42,.10) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+.header .brand,
+.header .brand span{
+  color: #0f172a !important;
+}
+
+.header .brand .sub{
+  color: rgba(15, 23, 42, .70) !important;
+}
+
+.header .menu a{
+  color: rgba(15, 23, 42, .86) !important;
+}
+
+.header .menu a:hover{
+  background: rgba(15, 23, 42, .06) !important;
+  border-color: rgba(15, 23, 42, .12) !important;
+  color: #0f172a !important;
+}
+
+/* HEADER CTA: zladené s hero (nie "marketing button") */
+.header .cta{
+  background: rgba(37, 99, 235, .12) !important;
+  color: rgba(15, 23, 42, .92) !important;
+  border: 1px solid rgba(37, 99, 235, .32) !important;
+  box-shadow: none !important;
+  font-weight: 850;
+}
+
+.header .cta:hover{
+  background: rgba(37, 99, 235, .16) !important;
+  border-color: rgba(37, 99, 235, .48) !important;
+}
+
+/* logo v headri nech zostane normálne (žiadne invert) */
+.header .brand-logo{ filter: none !important; }
+
+/* FOOTER: plný tmavý základ (kontrast k headeru) */
+.footer{
+  background: #0b1220 !important;
+  border-top: 1px solid rgba(255,255,255,.14) !important;
+}
+
+.footer,
+.footer p,
+.footer small,
+.footer a{
+  color: rgba(238,244,255,.86) !important;
+}
+
+.footer a:hover{
+  color: #ffffff !important;
+}
+
+/* =================================================
+   LOGO FIX: brand-badge ako reálne logo (ak sa používa)
+================================================= */
+.brand-badge{
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: url("../img/logo-mark.png") center / contain no-repeat !important;
+  box-shadow: none !important;
+}
+
+.header .brand-badge{
+  border: 1px solid rgba(15,23,42,.10);
+  filter: drop-shadow(0 6px 12px rgba(15,23,42,.12));
+}
+
+.footer .brand-badge{
+  border: 1px solid rgba(255,255,255,.12);
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.45)) saturate(1.05) contrast(1.05);
+}
+
+/* Responsive: header nech je o kúsok kompaktnejší */
+@media (max-width: 900px){
+  .nav{padding: 12px 0}
+}
