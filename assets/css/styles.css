@@ -239,3 +239,68 @@ small{color:var(--muted)}
   margin-top:8px;
   color: rgba(238,244,255,.85);
 }
+
+
+
+/* =================================================
+   OVERRIDES: VARIANTA A (svetlý header × tmavý footer)
+   Pridané na koniec, aby prepísalo pôvodné štýly.
+================================================= */
+
+/* LIGHT HEADER */
+.header{
+  background: rgba(245, 247, 250, .95) !important;
+  border-bottom: 1px solid rgba(0,0,0,.10) !important;
+}
+
+.header .brand,
+.header .brand span{
+  color: #0f172a !important;
+}
+
+.header .brand .sub{
+  color: rgba(15, 23, 42, .70) !important;
+}
+
+.header .menu a{
+  color: rgba(15, 23, 42, .90) !important;
+}
+
+.header .menu a:hover{
+  background: rgba(15, 23, 42, .06) !important;
+  border-color: rgba(15, 23, 42, .12) !important;
+  color: #0f172a !important;
+}
+
+/* CTA v headri nech je kontrastná a čitateľná */
+.header .cta{
+  border-color: rgba(37, 99, 235, .35) !important;
+  background: linear-gradient(135deg, rgba(37, 99, 235, .95), rgba(37, 99, 235, .72)) !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.18) !important;
+}
+.header .cta:hover{
+  border-color: rgba(37, 99, 235, .55) !important;
+}
+
+/* ak používaš obrázkové logo v headri (nie badge), nech sa NEinvertuje */
+.header .brand-logo{
+  filter: none !important;
+}
+
+/* DARK FOOTER */
+.footer{
+  background: #0b1220 !important;
+  border-top: 1px solid rgba(255,255,255,.14) !important;
+}
+
+.footer,
+.footer p,
+.footer small,
+.footer a{
+  color: rgba(238,244,255,.86) !important;
+}
+
+.footer a:hover{
+  color: #ffffff !important;
+}
