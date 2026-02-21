@@ -305,49 +305,41 @@ small{color:var(--muted)}
   color: #ffffff !important;
 }
 
-/* =========================================
-   LOGO / BRAND – fix pre svetlý header & tmavý footer
-   (pridaj na KONIEC styles.css)
-========================================= */
+/* =================================================
+   LOGO FIX: brand-badge ako reálne logo (FINAL)
+================================================= */
 
-/* HEADER: logo musí mať obrys a tmavý text */
+.brand-badge{
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: url("../img/logo-mark.png") center / contain no-repeat !important;
+  box-shadow: none !important;
+}
+
+/* HEADER */
+.header .brand-badge{
+  border: 1px solid rgba(15,23,42,.10);
+  filter: drop-shadow(0 6px 12px rgba(15,23,42,.12));
+}
+
 .header .brand{
   color: #0f172a !important;
 }
-
 .header .brand .sub{
   color: rgba(15,23,42,.72) !important;
 }
 
-.header .brand-badge{
-  /* nech je čitateľný na svetlom pozadí */
-  border: 1px solid rgba(15,23,42,.14);
-  box-shadow: 0 8px 18px rgba(15,23,42,.12);
+/* FOOTER */
+.footer .brand-badge{
+  border: 1px solid rgba(255,255,255,.12);
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.45))
+          saturate(1.05) contrast(1.05);
 }
 
-/* ak používaš aj obrázkové logo (.brand-logo) */
-.header .brand-logo{
-  filter: none !important;
-}
-
-/* FOOTER: logo text svetlý + badge s jemným light obrysom */
 .footer .brand{
   color: rgba(238,244,255,.92) !important;
 }
-
 .footer .brand .sub{
   color: rgba(238,244,255,.72) !important;
-}
-
-.footer .brand-badge{
-  border: 1px solid rgba(255,255,255,.18);
-  box-shadow: 0 10px 24px rgba(0,0,0,.35);
-  /* trochu viac “živé” na tmavom pozadí */
-  filter: saturate(1.05) contrast(1.05);
-}
-
-/* ak používaš aj obrázkové logo (.brand-logo) */
-.footer .brand-logo{
-  filter: brightness(0) invert(1);
-  opacity: .92;
 }
