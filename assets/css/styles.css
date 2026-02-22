@@ -2,13 +2,17 @@
   /* LIGHTER DARK THEME (menej tmavé) */
   --bg:#101a2d;
   --bg2:#0d1526;
+
   --card: rgba(255,255,255,.08);
   --card2: rgba(255,255,255,.06);
+
   --text:#eef4ff;
   --muted:#c6d2ee;
   --line:rgba(255,255,255,.18);
+
   --accent:#4f8cff;
   --accent2:#67f5c6;
+
   --shadow: 0 10px 30px rgba(0,0,0,.30);
   --radius:18px;
   --max:1120px;
@@ -40,7 +44,9 @@ small{color:var(--muted)}
 .skip-link{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;}
 .skip-link:focus{left:16px; top:16px; width:auto; height:auto; padding:10px 12px; background: rgba(255,255,255,.10); border:1px solid var(--line); border-radius: 12px; z-index: 9999; color: var(--text);}
 
-/* HEADER: pôvodný (dark) – zostáva, prepíše sa v overrides */
+/* =========================
+   HEADER (base)
+========================= */
 .header{
   position: sticky;
   top: 0;
@@ -60,7 +66,7 @@ small{color:var(--muted)}
 .brand span{display:block}
 .brand .sub{font-weight:650; color: var(--muted); font-size:12px; margin-top:-2px}
 
-/* LOGO: aby nezmizlo */
+/* LOGO */
 .brand-logo{
   width:36px; height:36px;
   border-radius:10px;
@@ -110,7 +116,9 @@ small{color:var(--muted)}
 }
 .cta.small{padding:8px 12px; border-radius: 12px; font-weight:800}
 
-/* HERO – pôvodný (prepíše sa v overrides) */
+/* =========================
+   HERO (base)
+========================= */
 .hero{
   position: relative;
   padding: 56px 0 28px;
@@ -137,7 +145,9 @@ small{color:var(--muted)}
 .hero-grid{display:grid; grid-template-columns: 1.2fr .8fr; gap: 18px;}
 @media (max-width: 900px){.hero-grid{grid-template-columns:1fr}}
 
-/* CARDS – PÔVODNÉ (NECHÁVAME) */
+/* =========================
+   CARDS (pôvodné)
+========================= */
 .card{
   background: rgba(255,255,255,.08);
   backdrop-filter: blur(14px);
@@ -204,7 +214,7 @@ small{color:var(--muted)}
   border-radius: 8px;
 }
 
-/* FOOTER – pôvodný (prepíše sa v overrides) */
+/* FOOTER (base) */
 .footer{
   padding: 26px 0 40px;
   border-top: 1px solid rgba(255,255,255,.14);
@@ -236,23 +246,23 @@ small{color:var(--muted)}
 }
 
 /* =================================================
-   OVERRIDES – finál (header light + hero readable + datacenter stage)
+   OVERRIDES – FINÁL (header + hero + main datacenter)
 ================================================= */
 
-/* HEADER: svetlejší, ale nie biely */
+/* HEADER: enterprise light (jemne tmavší než hero karty) */
 .header{
   background: linear-gradient(180deg,
-    rgba(230,235,242,.96),
-    rgba(220,226,235,.92)
+    rgba(218,225,235,.96),
+    rgba(206,214,226,.92)
   ) !important;
-  border-bottom: 1px solid rgba(15,23,42,.10) !important;
+  border-bottom: 1px solid rgba(15,23,42,.12) !important;
   backdrop-filter: blur(12px) !important;
 }
 
 .header .brand,
 .header .brand span{ color:#0f172a !important; }
 
-.header .brand .sub{ color: rgba(15,23,42,.70) !important; }
+.header .brand .sub{ color: rgba(15,23,42,.72) !important; }
 
 .header .menu a{ color: rgba(15,23,42,.86) !important; }
 
@@ -262,7 +272,7 @@ small{color:var(--muted)}
   color: #0f172a !important;
 }
 
-/* HEADER CTA: zladené */
+/* HEADER CTA: jemné, zladené */
 .header .cta{
   background: rgba(37, 99, 235, .12) !important;
   color: rgba(15, 23, 42, .92) !important;
@@ -276,54 +286,52 @@ small{color:var(--muted)}
 }
 
 /* =================================================
-   MAIN STAGE: datacenter pozadie pre celý obsah (všetky stránky)
-   — bude vidno pod kartami všade až po footer
+   MAIN STAGE: datacenter pozadie pre celý obsah (viditeľnejšie)
 ================================================= */
 main#content{
   position: relative;
   isolation: isolate;
 }
 
-/* pozadie datacentra */
+/* datacenter vrstva – výraznejšia */
 main#content::before{
   content:"";
   position:absolute;
   inset:0;
   background: url("../img/hero-datacenter.png") center/cover no-repeat;
-  filter: contrast(1.25) saturate(1.18) brightness(1.12);
-  opacity: .62;            /* zvýšené – aby bolo reálne vidno */
+  filter: contrast(1.35) saturate(1.25) brightness(1.10);
+  opacity: .85;            /* !!! výraznejšie */
   z-index: 0;
   pointer-events:none;
 }
 
-/* overlay – menej tmavý, aby pozadie nezmizlo */
+/* overlay – menej čierny, aby sa datacenter nestratil */
 main#content::after{
   content:"";
   position:absolute;
   inset:0;
   background:
-    radial-gradient(1100px 520px at 45% 20%, rgba(79,140,255,.18), transparent 60%),
-    linear-gradient(180deg, rgba(13,21,38,.32), rgba(13,21,38,.84));
+    radial-gradient(1200px 560px at 45% 20%, rgba(79,140,255,.18), transparent 62%),
+    linear-gradient(180deg, rgba(13,21,38,.22), rgba(13,21,38,.72));
   z-index: 1;
   pointer-events:none;
 }
 
-/* všetok obsah main nad pozadím */
+/* všetok obsah nad pozadím */
 main#content > *{
   position: relative;
   z-index: 2;
 }
 
 /* =================================================
-   HERO: laptop pozadie + čitateľnosť (tmavý text len v hero)
-   (Hero musí byť nad main pozadím a nesmie používať negatívne z-indexy)
+   HERO: laptop + čitateľnosť (karty NIE sú bledšie než header)
 ================================================= */
 .hero{
   padding: 64px 0 40px !important;
   position: relative !important;
   overflow: hidden !important;
-  isolation: isolate;     /* vlastný stacking context */
-  z-index: 3;             /* nad main background */
+  isolation: isolate;
+  z-index: 3;
 }
 
 /* laptop image */
@@ -332,41 +340,63 @@ main#content > *{
   position:absolute !important;
   inset:-20px !important;
   background: url("../img/hero-laptop.png") center/cover no-repeat !important;
-  filter: brightness(.98) contrast(1.06) saturate(1.02) !important;
+  filter: brightness(.96) contrast(1.08) saturate(1.02) !important;
   opacity: .92 !important;
   z-index: 0 !important;
 }
 
-/* svetlý overlay */
+/* overlay – trochu silnejší, aby pozadie neprepalovalo text */
 .hero::after{
   content:"" !important;
   position:absolute !important;
   inset:0 !important;
   background:
     radial-gradient(900px 450px at 30% 10%, rgba(79,140,255,.14), transparent 60%),
-    linear-gradient(180deg, rgba(232,236,242,.88), rgba(205,213,225,.92), rgba(16,26,45,.14)) !important;
+    linear-gradient(180deg,
+      rgba(224,231,242,.78),
+      rgba(206,214,226,.88),
+      rgba(16,26,45,.16)
+    ) !important;
   z-index: 1 !important;
 }
 
-/* obsah hero nad overlay */
-.hero > .container{
-  position: relative;
-  z-index: 2;
-}
+.hero > .container{ position: relative; z-index: 2; }
 
-/* hero karta – svetlá, aby text neplával v pozadí */
+/* HERO karty – enterprise, nie “bielejšie než header” */
 .hero .card{
-  background: rgba(255,255,255,.72) !important;
-  border-color: rgba(15,23,42,.10) !important;
-  box-shadow: 0 10px 30px rgba(2,6,23,.18) !important;
+  background: rgba(210,218,230,.92) !important;  /* tmavšie než header top */
+  border: 1px solid rgba(15,23,42,.12) !important;
+  box-shadow: 0 12px 30px rgba(2,6,23,.18) !important;
 }
 
-/* hero text: tmavý */
-.hero h1, .hero h2, .hero h3{ color:#0f172a !important; }
-.hero p, .hero small{ color: rgba(15,23,42,.78) !important; }
+/* HERO text – tmavý a čitateľný */
+.hero h1,.hero h2,.hero h3{ color:#0f172a !important; }
+.hero p,.hero small{ color: rgba(15,23,42,.78) !important; }
 .hero b{ color:#0f172a !important; }
 
-/* sekundárne CTA v hero nech ladí */
+/* HERO linky (napr. zoznam článkov) */
+.hero a{ color: rgba(15,23,42,.86); }
+.hero a:hover{ color: #1d4ed8; }
+
+/* HERO badges – aby nezmizli */
+.hero .badge{
+  border: 1px solid rgba(15,23,42,.12) !important;
+  background: rgba(15,23,42,.06) !important;
+  color: rgba(15,23,42,.86) !important;
+}
+.hero .badge b{ color:#0f172a !important; }
+
+/* CTA v hero */
+.hero .cta{
+  border-color: rgba(37,99,235,.32) !important;
+  background: rgba(37,99,235,.12) !important;
+  color: rgba(15,23,42,.92) !important;
+  box-shadow: none !important;
+}
+.hero .cta:hover{
+  background: rgba(37,99,235,.16) !important;
+  border-color: rgba(37,99,235,.48) !important;
+}
 .hero .cta.secondary{
   background: rgba(15,23,42,.06) !important;
   border-color: rgba(15,23,42,.12) !important;
@@ -374,15 +404,14 @@ main#content > *{
 }
 
 /* =================================================
-   Vypni staré infra-bg pseudo, ak ti niekde ostalo v HTML
-   (aby nevznikali dvojité vrstvy)
+   Vypni staré infra-bg pseudo (ak ti niekde ostalo v HTML)
 ================================================= */
 .section.infra-bg::before,
 .section.infra-bg::after{
   display: none !important;
 }
 
-/* FOOTER: tmavý (kontrast k headeru) */
+/* FOOTER: tmavý */
 .footer{
   background: #0b1220 !important;
   border-top: 1px solid rgba(255,255,255,.14) !important;
@@ -401,12 +430,10 @@ main#content > *{
   background: url("../img/logo-mark.png") center / contain no-repeat !important;
   box-shadow: none !important;
 }
-
 .header .brand-badge{
   border: 1px solid rgba(15,23,42,.10);
   filter: drop-shadow(0 6px 12px rgba(15,23,42,.12));
 }
-
 .footer .brand-badge{
   border: 1px solid rgba(255,255,255,.12);
   filter: drop-shadow(0 10px 18px rgba(0,0,0,.45)) saturate(1.05) contrast(1.05);
