@@ -295,35 +295,44 @@ main#content{
   isolation: isolate;
 }
 
-/* datacenter – fix pozície */
+/* datacenter – silnejšie + konzistentnejšie */
 main#content::before{
   content:"";
   position:absolute;
   inset:0;
   background: url("../img/hero-datacenter.png") center/cover no-repeat;
-  background-position: center 20% !important; /* konzistentnejší výrez */
-  filter: contrast(1.35) saturate(1.25) brightness(1.10);
-  opacity: .82;            /* viditeľné */
+  background-position: center 28% !important; /* posun mierne hore, aby sa nebral len tmavý spodok */
+  filter: contrast(1.55) saturate(1.45) brightness(1.12);
+  opacity: .92;  /* zvýšené */
   z-index: 0;
   pointer-events:none;
 }
 
-/* overlay – “equalizer” + jemný dark gradient */
+/* overlay – menej “dusí” pozadie, ale stále drží tmavý look */
 main#content::after{
   content:"";
   position:absolute;
   inset:0;
   background:
-    /* equalizer: zjemní rozdiel hore svetlé / dole tmavé */
+    /* equalizer: jemne vyrovná (bez toho, aby prebil detaily) */
     linear-gradient(180deg,
-      rgba(255,255,255,.06),
-      rgba(255,255,255,.00) 38%,
-      rgba(0,0,0,.20)
+      rgba(255,255,255,.07),
+      rgba(255,255,255,.00) 40%,
+      rgba(0,0,0,.14)
     ),
-    radial-gradient(1200px 560px at 45% 20%, rgba(79,140,255,.18), transparent 62%),
-    linear-gradient(180deg, rgba(13,21,38,.18), rgba(13,21,38,.70));
+    /* modrý “glow” pre datacenter highlights */
+    radial-gradient(1200px 560px at 45% 20%, rgba(79,140,255,.22), transparent 62%),
+    /* tmavý gradient – o niečo slabší než predtým */
+    linear-gradient(180deg, rgba(13,21,38,.14), rgba(13,21,38,.58));
   z-index: 1;
   pointer-events:none;
+}
+
+/* VOLITEĽNÉ: na desktope spraví pozadie výraznejšie (parallax feel) */
+@media (min-width: 900px){
+  main#content::before{
+    background-attachment: fixed;
+  }
 }
 
 /* obsah nad pozadím */
