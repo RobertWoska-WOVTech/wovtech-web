@@ -246,26 +246,26 @@ small{color:var(--muted)}
 }
 
 /* =================================================
-   OVERRIDES – FINÁL (header + hero + main datacenter)
+   OVERRIDES – finál (header = hero card + datacenter equalized)
 ================================================= */
 
-/* HEADER: enterprise light (jemne tmavší než hero karty) */
+/* HERO karty – referenčná “enterprise” farba */
+:root{
+  --heroCard: rgba(210,218,230,.92);
+}
+
+/* HEADER = rovnaká farba ako hero blok */
 .header{
-  background: linear-gradient(180deg,
-    rgba(218,225,235,.96),
-    rgba(206,214,226,.92)
-  ) !important;
+  background: var(--heroCard) !important;
   border-bottom: 1px solid rgba(15,23,42,.12) !important;
   backdrop-filter: blur(12px) !important;
 }
 
 .header .brand,
 .header .brand span{ color:#0f172a !important; }
-
 .header .brand .sub{ color: rgba(15,23,42,.72) !important; }
 
 .header .menu a{ color: rgba(15,23,42,.86) !important; }
-
 .header .menu a:hover{
   background: rgba(15,23,42,.06) !important;
   border-color: rgba(15,23,42,.12) !important;
@@ -286,45 +286,55 @@ small{color:var(--muted)}
 }
 
 /* =================================================
-   MAIN STAGE: datacenter pozadie pre celý obsah (viditeľnejšie)
+   MAIN STAGE: datacenter pozadie pre celý obsah
+   - fix pozície (aby nebral len tmavý spodok)
+   - equalizer overlay vyrovná svetlo/tmu
 ================================================= */
 main#content{
   position: relative;
   isolation: isolate;
 }
 
-/* datacenter vrstva – výraznejšia */
+/* datacenter – fix pozície */
 main#content::before{
   content:"";
   position:absolute;
   inset:0;
   background: url("../img/hero-datacenter.png") center/cover no-repeat;
+  background-position: center 20% !important; /* konzistentnejší výrez */
   filter: contrast(1.35) saturate(1.25) brightness(1.10);
-  opacity: .85;            /* !!! výraznejšie */
+  opacity: .82;            /* viditeľné */
   z-index: 0;
   pointer-events:none;
 }
 
-/* overlay – menej čierny, aby sa datacenter nestratil */
+/* overlay – “equalizer” + jemný dark gradient */
 main#content::after{
   content:"";
   position:absolute;
   inset:0;
   background:
+    /* equalizer: zjemní rozdiel hore svetlé / dole tmavé */
+    linear-gradient(180deg,
+      rgba(255,255,255,.06),
+      rgba(255,255,255,.00) 38%,
+      rgba(0,0,0,.20)
+    ),
     radial-gradient(1200px 560px at 45% 20%, rgba(79,140,255,.18), transparent 62%),
-    linear-gradient(180deg, rgba(13,21,38,.22), rgba(13,21,38,.72));
+    linear-gradient(180deg, rgba(13,21,38,.18), rgba(13,21,38,.70));
   z-index: 1;
   pointer-events:none;
 }
 
-/* všetok obsah nad pozadím */
+/* obsah nad pozadím */
 main#content > *{
   position: relative;
   z-index: 2;
 }
 
 /* =================================================
-   HERO: laptop + čitateľnosť (karty NIE sú bledšie než header)
+   HERO: laptop + čitateľnosť
+   (karty NIE sú bledšie než header, text vždy viditeľný)
 ================================================= */
 .hero{
   padding: 64px 0 40px !important;
@@ -345,7 +355,7 @@ main#content > *{
   z-index: 0 !important;
 }
 
-/* overlay – trochu silnejší, aby pozadie neprepalovalo text */
+/* overlay */
 .hero::after{
   content:"" !important;
   position:absolute !important;
@@ -362,23 +372,24 @@ main#content > *{
 
 .hero > .container{ position: relative; z-index: 2; }
 
-/* HERO karty – enterprise, nie “bielejšie než header” */
+/* HERO karty – rovnaký tón ako header */
 .hero .card{
-  background: rgba(210,218,230,.92) !important;  /* tmavšie než header top */
+  background: var(--heroCard) !important;
   border: 1px solid rgba(15,23,42,.12) !important;
   box-shadow: 0 12px 30px rgba(2,6,23,.18) !important;
 }
 
-/* HERO text – tmavý a čitateľný */
+/* HERO text */
 .hero h1,.hero h2,.hero h3{ color:#0f172a !important; }
 .hero p,.hero small{ color: rgba(15,23,42,.78) !important; }
 .hero b{ color:#0f172a !important; }
 
-/* HERO linky (napr. zoznam článkov) */
-.hero a{ color: rgba(15,23,42,.86); }
-.hero a:hover{ color: #1d4ed8; }
+/* HERO linky/listy – aby nič nezmizlo */
+.hero a{ color: rgba(15,23,42,.86) !important; }
+.hero a:hover{ color: #1d4ed8 !important; }
+.hero ul, .hero li{ color: rgba(15,23,42,.78) !important; }
 
-/* HERO badges – aby nezmizli */
+/* HERO badges */
 .hero .badge{
   border: 1px solid rgba(15,23,42,.12) !important;
   background: rgba(15,23,42,.06) !important;
@@ -404,7 +415,7 @@ main#content > *{
 }
 
 /* =================================================
-   Vypni staré infra-bg pseudo (ak ti niekde ostalo v HTML)
+   vypni staré infra-bg pseudo (ak ostalo v HTML)
 ================================================= */
 .section.infra-bg::before,
 .section.infra-bg::after{
