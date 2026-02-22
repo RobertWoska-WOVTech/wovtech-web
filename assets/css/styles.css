@@ -68,7 +68,7 @@ small{color:var(--muted)}
   filter: drop-shadow(0 8px 18px rgba(0,0,0,.35));
 }
 
-/* ak niekde používaš .brand-badge */
+/* ak niekde používaš .brand-badge (prepíše sa v overrides) */
 .brand-badge{
   width:36px; height:36px;
   border-radius:10px;
@@ -109,29 +109,30 @@ small{color:var(--muted)}
 }
 .cta.small{padding:8px 12px; border-radius: 12px; font-weight:800}
 
-/* HERO – pôvodný (datacenter) zostáva, prepíšeme v overrides */
+/* HERO – pôvodný (prepíše sa v overrides) */
 .hero{
   position: relative;
   padding: 56px 0 28px;
   overflow:hidden;
 }
-/* HERO: nech nie je svetlejší než header */
 .hero::before{
-  /* laptop obrázok nech nie je tak jasný */
-  filter: brightness(.95) contrast(1.06) saturate(1.02) !important;
-  opacity: .85 !important;
+  content:"";
+  position:absolute;
+  inset:-20px;
+  background: url("../img/hero-datacenter.png") center/cover no-repeat;
+  filter: contrast(1.25) saturate(1.15) brightness(1.12);
+  opacity: .55;
+  z-index:-2;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(900px 450px at 40% 10%, rgba(79,140,255,.18), transparent 60%),
+              linear-gradient(180deg, rgba(13,21,38,.35), rgba(13,21,38,.70));
+  z-index:-1;
 }
 
-.hero::after{
-  /* pridáme trochu tmavší spodok – plynulý prechod do dark sekcií */
-  background:
-    radial-gradient(900px 450px at 30% 10%, rgba(79,140,255,.14), transparent 60%),
-    linear-gradient(180deg,
-      rgba(232,236,242,.90),
-      rgba(205,213,225,.92),
-      rgba(16,26,45,.20)
-    ) !important;
-}
 .hero-grid{display:grid; grid-template-columns: 1.2fr .8fr; gap: 18px;}
 @media (max-width: 900px){.hero-grid{grid-template-columns:1fr}}
 
@@ -273,47 +274,62 @@ small{color:var(--muted)}
   border-color: rgba(37, 99, 235, .48) !important;
 }
 
-/* HERO: vymeníme pozadie za laptop + svetlý overlay */
+/* HERO: laptop + overlay aby nebolo svetlejšie než header */
 .hero{
   padding: 64px 0 40px !important;
 }
 
 .hero::before{
   background: url("../img/hero-laptop.png") center/cover no-repeat !important;
-  filter: brightness(1.05) contrast(1.05) !important;
-  opacity: .90 !important;
+  filter: brightness(.95) contrast(1.06) saturate(1.02) !important;
+  opacity: .85 !important;
 }
 
 .hero::after{
   background:
-    radial-gradient(900px 450px at 30% 10%, rgba(79,140,255,.18), transparent 60%),
-    linear-gradient(180deg, rgba(245,247,250,.88), rgba(245,247,250,.96)) !important;
+    radial-gradient(900px 450px at 30% 10%, rgba(79,140,255,.14), transparent 60%),
+    linear-gradient(180deg,
+      rgba(232,236,242,.90),
+      rgba(205,213,225,.92),
+      rgba(16,26,45,.20)
+    ) !important;
 }
 
-/* INFRA BG: datacenter presunutý do druhej sekcie (pridaj class="infra-bg" do HTML) */
-.infra-bg{
+/* INFRA BG FIX: datacenter v body sekcii (class="section infra-bg") */
+.section.infra-bg{
   position: relative;
   overflow: hidden;
+  isolation: isolate;      /* FIX: správne vrstvenie */
+  padding: 56px 0;         /* aby bolo pozadie vidno */
 }
 
-.infra-bg::before{
+/* obsah nad pozadím */
+.section.infra-bg > .container,
+.section.infra-bg .container{
+  position: relative;
+  z-index: 2;
+}
+
+/* datacenter */
+.section.infra-bg::before{
   content:"";
   position:absolute;
-  inset:-20px;
+  inset:-40px;
   background: url("../img/hero-datacenter.png") center/cover no-repeat;
-  filter: contrast(1.25) saturate(1.15) brightness(1.08);
-  opacity: .55;
-  z-index:-2;
+  filter: contrast(1.20) saturate(1.10) brightness(1.05);
+  opacity: .38;            /* jemné, ale viditeľné */
+  z-index: 0;
 }
 
-.infra-bg::after{
+/* overlay */
+.section.infra-bg::after{
   content:"";
   position:absolute;
   inset:0;
   background:
-    radial-gradient(900px 450px at 40% 10%, rgba(79,140,255,.18), transparent 60%),
-    linear-gradient(180deg, rgba(13,21,38,.65), rgba(13,21,38,.85));
-  z-index:-1;
+    radial-gradient(900px 450px at 40% 10%, rgba(79,140,255,.16), transparent 60%),
+    linear-gradient(180deg, rgba(13,21,38,.72), rgba(13,21,38,.88));
+  z-index: 1;
 }
 
 /* FOOTER: tmavý (kontrast k headeru) */
