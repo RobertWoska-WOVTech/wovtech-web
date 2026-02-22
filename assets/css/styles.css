@@ -70,13 +70,18 @@ small{color:var(--muted)}
 
 .nav{display:flex; align-items:center; justify-content:space-between; padding: 14px 0; gap: 12px;}
 
+/* ✅ FIX: .brand NESMIE byť globálne tmavý (footer ho potrebuje svetlý) */
 .brand{
   display:flex; align-items:center; gap:10px;
   font-weight:900; letter-spacing:.2px;
-  color:#0f172a;
+  color: var(--text);
 }
 .brand span{display:block}
-.brand .sub{font-weight:650; color: rgba(15,23,42,.72); font-size:12px; margin-top:-2px}
+.brand .sub{font-weight:650; color: var(--muted); font-size:12px; margin-top:-2px}
+
+/* header má tmavý text */
+.header .brand{ color:#0f172a; }
+.header .brand .sub{ color: rgba(15,23,42,.72); }
 
 .brand-logo{
   width:36px; height:36px;
@@ -95,6 +100,7 @@ small{color:var(--muted)}
   filter: drop-shadow(0 6px 12px rgba(15,23,42,.12));
 }
 
+/* MENU */
 .menu{display:flex; align-items:center; gap: 10px; flex-wrap: wrap; justify-content: flex-end;}
 .menu a{
   padding: 8px 10px;
@@ -108,6 +114,7 @@ small{color:var(--muted)}
   color: #0f172a;
 }
 
+/* CTA */
 .cta{
   display:inline-flex; align-items:center; justify-content:center; gap:10px;
   padding: 10px 14px; border-radius: 14px;
@@ -183,6 +190,14 @@ small{color:var(--muted)}
 .hero b{ color:#0f172a !important; }
 .hero a{ color: rgba(15,23,42,.86) !important; }
 .hero a:hover{ color:#1d4ed8 !important; }
+
+/* ✅ FIX: badges v HERO musia mať tmavý text (inak „biele na svetlom“) */
+.hero .badge{
+  border: 1px solid rgba(15,23,42,.14) !important;
+  background: rgba(15,23,42,.06) !important;
+  color: rgba(15,23,42,.88) !important;
+}
+.hero .badge b{ color:#0f172a !important; }
 
 /* =========================
    CARDS (global)
@@ -365,6 +380,10 @@ main#content > *{ position: relative; z-index:2; }
 .footer a:hover{color: #ffffff}
 
 .footer-grid .brand{ justify-content:center; }
+
+/* ✅ FIX: footer brand musí byť svetlý (už to rieši globálny .brand), ale nech je to isté aj explicitne */
+.footer .brand{ color: rgba(238,244,255,.95); }
+.footer .brand .sub{ color: rgba(238,244,255,.80); }
 
 .footer-grid small{
   display:block;
