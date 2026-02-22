@@ -5,11 +5,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Služby | WOV Tech</title>
-  <meta name="description" content="Služby ako piliere návrhu infra: DDI, NTP, cloud, monitoring infra, log management, zálohy & obnova." />
+  <meta name="description" content="Služby ako piliere návrhu infra: návrh infraštruktúry, DDI, NTP, cloud, monitoring, log management, zálohy a obnova." />
   <meta name="robots" content="index,follow,noarchive" />
   <link rel="canonical" href="https://wovtech.sk/sluzby.html" />
   <meta property="og:title" content="Služby | WOV Tech" />
-  <meta property="og:description" content="Služby ako piliere návrhu infra: DDI, NTP, cloud, monitoring infra, log management, zálohy & obnova." />
+  <meta property="og:description" content="Služby ako piliere návrhu infra: návrh infraštruktúry, DDI, NTP, cloud, monitoring, log management, zálohy a obnova." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://wovtech.sk/sluzby.html" />
   <meta name="theme-color" content="#0b1220" />
@@ -19,9 +19,7 @@
 <a class="skip-link" href="#content">Preskočiť na obsah</a>
 
 <header class="header">
-  
-
-<div class="container">
+  <div class="container">
     <nav class="nav" aria-label="Hlavná navigácia">
       <a class="brand" href="index.html">
         <img class="brand-logo" src="assets/img/logo-mark.png" alt="WOV Tech logo" width="36" height="36" loading="lazy" />
@@ -43,8 +41,15 @@
 <section class="hero">
   <div class="container">
     <div class="card pad-lg">
-      <h1>Služby (piliere návrhu infra)</h1>
-      <p>Jedna hlavná služba je návrh infraštruktúry. Nižšie sú oblasti, ktoré sa v praxi riešia najčastejšie.</p>
+      <h1>Služby</h1>
+      <p>
+        Základom je <b>návrh infraštruktúry</b> – rozhodnutia, kompromisy a výstupy, ktoré vedia prevziať interné tímy aj dodávatelia.
+        Nižšie sú oblasti, ktoré sa pri návrhu a stabilizácii riešia najčastejšie.
+      </p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap">
+        <a class="cta" href="kontakt.html">Dohodnúť konzultáciu</a>
+        <a class="cta secondary" href="navrh-infrastruktury.html">Proces a výstupy</a>
+      </div>
     </div>
   </div>
 </section>
@@ -53,37 +58,43 @@
   <div class="container grid" role="list">
     <div class="service" role="listitem">
       <h3>Návrh infraštruktúry</h3>
-      <p>HLD/LLD, rozhodnutia, trade-offy, bezpečnosť, operability.</p>
+      <p>HLD/LLD, rozhodnutia, kompromisy, bezpečnosť a prevádzkovateľnosť.</p>
       <a class="link" href="navrh-infrastruktury.html">Detail →</a>
     </div>
+
     <div class="service" role="listitem">
       <h3>DDI: DNS / DHCP / IPAM</h3>
-      <p>Core služby, HA, ownership, automatizácie.</p>
+      <p>Core služby: dostupnosť (HA), vlastníctvo, automatizácie a prevádzkové postupy.</p>
       <a class="link" href="sluzby/ddi-dns-dhcp-ipam.html">Detail →</a>
     </div>
+
     <div class="service" role="listitem">
       <h3>NTP: časová infra</h3>
-      <p>NTP dizajn, monitoring a prevádzkové riziká nesprávneho času.</p>
+      <p>Návrh NTP, monitoring a riziká nesprávneho času (logy, certifikáty, autentifikácia).</p>
       <a class="link" href="sluzby/ntp.html">Detail →</a>
     </div>
+
     <div class="service" role="listitem">
-      <h3>Cloud ops: AWS / Azure / Google Cloud</h3>
-      <p>Prevádzka, bezpečnosť, IaC baseline a stabilizácia.</p>
+      <h3>Cloud: AWS / Azure / Google Cloud</h3>
+      <p>Bezpečná prevádzka, baseline (IaC) a stabilizácia prostredia.</p>
       <a class="link" href="sluzby/cloud-aws-azure.html">Detail →</a>
     </div>
+
     <div class="service" role="listitem">
       <h3>Monitoring infraštruktúry</h3>
-      <p>Server/device monitoring, metriky, alerty a dashboardy.</p>
+      <p>Monitoring serverov a zariadení, metriky, alerty a dashboardy.</p>
       <a class="link" href="sluzby/monitoring-infrastruktury.html">Detail →</a>
     </div>
+
     <div class="service" role="listitem">
       <h3>Log management</h3>
-      <p>Zber, parsing a vyhľadávanie logov (ELK/OpenSearch), retention.</p>
+      <p>Zber, spracovanie a vyhľadávanie logov (ELK/OpenSearch) vrátane retencie.</p>
       <a class="link" href="sluzby/log-management.html">Detail →</a>
     </div>
+
     <div class="service" role="listitem">
-      <h3>Zálohy & obnova</h3>
-      <p>Návrh backup & recovery: čo zálohovať, ako obnovovať, testy.</p>
+      <h3>Zálohy &amp; obnova</h3>
+      <p>Návrh backup &amp; recovery: čo zálohovať, ako obnovovať a ako testovať obnovu.</p>
       <a class="link" href="sluzby/zalohy-a-obnova.html">Detail →</a>
     </div>
   </div>
@@ -92,20 +103,27 @@
 <section class="section">
   <div class="container two-col">
     <div class="card pad">
-      <h2>Ceny</h2>
-      <p>Na webe ich nezverejňujem. Pre infra sa rozsah líši podľa prístupov, veľkosti a SLA. Preferujeme jasné balíčky s výstupom:</p>
+      <h2>Ceny a rozsah</h2>
+      <p>
+        Ceny na webe nezverejňujeme, pretože rozsah závisí od prístupov, veľkosti prostredia a požadovaného SLA.
+        Pracujeme však s jasne definovanými balíčkami a výstupmi:
+      </p>
       <ul class="list">
-        <li><b>Audit</b> – riziká, quick wins, plán</li>
-        <li><b>Návrh</b> – HLD/LLD, rozhodnutia, operability</li>
-        <li><b>Stabilizácia</b> – implementácia krokov z návrhu</li>
+        <li><b>Audit</b> – riziká, rýchle zlepšenia a plán ďalších krokov</li>
+        <li><b>Návrh</b> – HLD/LLD, rozhodnutia, kompromisy a prevádzkovateľnosť</li>
+        <li><b>Stabilizácia</b> – implementácia krokov z návrhu a zníženie rizika incidentov</li>
       </ul>
+      <div class="hr"></div>
+      <a class="cta" href="kontakt.html">Požiadať o ponuku</a>
+      <p class="notice" style="margin-top:10px">Úvodná konzultácia slúži na zmapovanie rozsahu a očakávaných výstupov.</p>
     </div>
+
     <div class="card pad">
-      <h2>Čo si premyslieť</h2>
-      <p>Ak chceš ušetriť čas na prvom calle, začni týmito článkami:</p>
+      <h2>Čo si premyslieť pred kontaktom</h2>
+      <p>Ak chcete urýchliť úvodnú konzultáciu, odporúčame začať týmito článkami:</p>
       <ul class="list">
         <li><a href="navrh-infrastruktury/co-si-premysliet/zalohy-a-obnova.html">Zálohy a obnova</a></li>
-        <li><a href="navrh-infrastruktury/co-si-premysliet/pristupy-a-identita.html">Prístupy & identita</a></li>
+        <li><a href="navrh-infrastruktury/co-si-premysliet/pristupy-a-identita.html">Prístupy &amp; identita</a></li>
         <li><a href="navrh-infrastruktury/co-si-premysliet/networking-v-infra-navrhu.html">Networking v návrhu infra</a></li>
       </ul>
       <div class="hr"></div>
