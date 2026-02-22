@@ -302,7 +302,6 @@ main#content > *{ position: relative; z-index:2; }
 
 /* =========================
    INLINE BACKGROUND OVERRIDE
-   - zbije tie style="background: rgba(...)" v kontakt.html
 ========================= */
 .section .card[style],
 .section .card.pad[style],
@@ -312,10 +311,10 @@ main#content > *{ position: relative; z-index:2; }
 
 /* =========================
    OVERRIDES – LIGHT AREAS (HEADER + HERO)
-   - opravuje neviditeľný text v svetlých kartách
+   - fix neviditeľného textu na svetlých kartách
 ========================= */
 
-/* HEADER: rovnaký materiál ako hero karta */
+/* HEADER: svetlá varianta */
 .header{
   background: var(--heroCard) !important;
   border-bottom: 1px solid rgba(15,23,42,.10);
@@ -324,30 +323,30 @@ main#content > *{ position: relative; z-index:2; }
 }
 
 /* header text farby */
-.header .brand{ color:#0f172a; }
-.header .brand .sub{ color: rgba(15,23,42,.72); }
-.header .menu a{ color: rgba(15,23,42,.86); }
+.header .brand{ color:#0f172a !important; }
+.header .brand .sub{ color: rgba(15,23,42,.72) !important; }
+.header .menu a{ color: rgba(15,23,42,.86) !important; }
 .header .menu a:hover{
   border-color: rgba(15,23,42,.12);
   background: rgba(15,23,42,.06);
-  color: #0f172a;
+  color: #0f172a !important;
 }
 
 /* header CTA – svetlá varianta */
 .header .cta{
-  border: 1px solid rgba(37, 99, 235, .32);
-  background: rgba(37, 99, 235, .12);
-  box-shadow: none;
-  color: rgba(15, 23, 42, .92);
+  border: 1px solid rgba(37, 99, 235, .32) !important;
+  background: rgba(37, 99, 235, .12) !important;
+  box-shadow: none !important;
+  color: rgba(15, 23, 42, .92) !important;
 }
 .header .cta:hover{
-  background: rgba(37, 99, 235, .16);
-  border-color: rgba(37, 99, 235, .48);
+  background: rgba(37, 99, 235, .16) !important;
+  border-color: rgba(37, 99, 235, .48) !important;
 }
 .header .cta.secondary{
-  background: rgba(15,23,42,.06);
-  border-color: rgba(15,23,42,.12);
-  color: #0f172a;
+  background: rgba(15,23,42,.06) !important;
+  border-color: rgba(15,23,42,.12) !important;
+  color: #0f172a !important;
 }
 
 /* HERO karty */
@@ -366,7 +365,7 @@ main#content > *{ position: relative; z-index:2; }
 .hero a{ color: rgba(15,23,42,.86) !important; }
 .hero a:hover{ color:#1d4ed8 !important; }
 
-/* HERO badges – tmavý text (aby nezmizol na svetlej karte) */
+/* HERO badges – tmavý text */
 .hero .badge{
   border: 1px solid rgba(15,23,42,.12) !important;
   background: rgba(15,23,42,.06) !important;
@@ -376,19 +375,19 @@ main#content > *{ position: relative; z-index:2; }
 
 /* HERO CTA – svetlá varianta */
 .hero .cta{
-  border: 1px solid rgba(37, 99, 235, .32);
-  background: rgba(37, 99, 235, .12);
-  box-shadow: none;
-  color: rgba(15, 23, 42, .92);
+  border: 1px solid rgba(37, 99, 235, .32) !important;
+  background: rgba(37, 99, 235, .12) !important;
+  box-shadow: none !important;
+  color: rgba(15, 23, 42, .92) !important;
 }
 .hero .cta:hover{
-  background: rgba(37, 99, 235, .16);
-  border-color: rgba(37, 99, 235, .48);
+  background: rgba(37, 99, 235, .16) !important;
+  border-color: rgba(37, 99, 235, .48) !important;
 }
 .hero .cta.secondary{
-  background: rgba(15,23,42,.06);
-  border-color: rgba(15,23,42,.12);
-  color: #0f172a;
+  background: rgba(15,23,42,.06) !important;
+  border-color: rgba(15,23,42,.12) !important;
+  color: #0f172a !important;
 }
 
 /* hero inline override */
@@ -398,18 +397,18 @@ main#content > *{ position: relative; z-index:2; }
   background: var(--heroCard) !important;
 }
 
-/* =========================
-   FOOTER
-   - FIX: brand bol tmavý → neviditeľný
-   - FIX: CTA bol svetlý → neviditeľný
-========================= */
+/* =================================================
+   FOOTER (fix: neviditeľný text a zlé centrovanie odkazov)
+================================================= */
 .footer{
   padding: 26px 0 40px;
   border-top: 1px solid rgba(255,255,255,.14);
   margin-top: 22px;
   background: #0b1220;
+  color: rgba(238,244,255,.90);
 }
 
+/* nechaj grid jednoduchý (tvoje HTML má 2 divy, druhý skrývaš) */
 .footer-grid{
   display:flex;
   justify-content:center;
@@ -420,20 +419,53 @@ main#content > *{ position: relative; z-index:2; }
   display:none !important;
 }
 
-/* footer brand + sub musia byť svetlé */
-.footer .brand{ color: rgba(238,244,255,.96) !important; }
-.footer .brand .sub{ color: rgba(238,244,255,.78) !important; }
+/* brand vo footeri: logo vľavo, text vedľa */
+.footer .brand{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:12px !important;
+  text-align:left !important;
+  color: rgba(238,244,255,.96) !important;
+}
 
-.footer a{color: rgba(238,244,255,.88)}
-.footer a:hover{color: #ffffff}
+.footer .brand > span{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:2px !important;
+  color: rgba(238,244,255,.96) !important;
+}
 
+.footer .brand .sub{
+  color: rgba(238,244,255,.78) !important;
+  font-weight:650;
+}
+
+/* copyright */
 .footer-grid small{
   display:block;
   margin-top:8px;
   color: rgba(238,244,255,.85);
 }
 
-/* footer CTA nech je čitateľné na tmavom */
+/* odkazy (Ochrana / Podmienky) vycentrovať */
+.footer-grid > div > div[style*="margin-top"]{
+  display:flex !important;
+  justify-content:center !important;
+  gap:16px !important;
+  width:100% !important;
+}
+
+/* linky */
+.footer a{
+  color: rgba(238,244,255,.88) !important;
+}
+.footer a:hover{
+  color:#ffffff !important;
+}
+
+/* CTA ak by sa v budúcnosti objavila vo footeri */
 .footer .cta{
   color: rgba(238,244,255,.96) !important;
   border-color: rgba(79,140,255,.45) !important;
@@ -452,61 +484,4 @@ main#content > *{ position: relative; z-index:2; }
 /* Responsive */
 @media (max-width: 900px){
   .nav{padding: 12px 0}
-}
-
-/* =================================================
-   FOOTER – HARD RESET (globálne, bez zmeny HTML)
-================================================= */
-
-.footer{
-  background: #0b1220;
-  color: rgba(238,244,255,.90);
-}
-
-/* celý brand blok centrovaný */
-.footer .brand{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-  text-align:center;
-}
-
-/* logo */
-.footer .brand-logo,
-.footer .brand-badge{
-  filter: none;
-  margin-bottom:2px;
-}
-
-/* názov firmy */
-.footer .brand > span{
-  color: rgba(238,244,255,.95) !important;
-  font-weight:900;
-  letter-spacing:.2px;
-}
-
-/* scope / subtext */
-.footer .brand .sub{
-  display:block;
-  margin-top:2px;
-  font-size:13px;
-  font-weight:650;
-  color: rgba(238,244,255,.80) !important;
-}
-
-/* odkazy vo footeri */
-.footer a{
-  color: rgba(238,244,255,.85) !important;
-}
-.footer a:hover{
-  color:#ffffff !important;
-}
-
-/* CTA ak by sa niekde objavila */
-.footer .cta{
-  background: rgba(255,255,255,.06) !important;
-  border: 1px solid rgba(255,255,255,.18) !important;
-  color: rgba(238,244,255,.95) !important;
 }
