@@ -312,8 +312,6 @@ main#content > *{ position: relative; z-index:2; }
 /* =========================
    OVERRIDES – LIGHT AREAS (HEADER + HERO)
 ========================= */
-
-/* HEADER: svetlá varianta */
 .header{
   background: var(--heroCard) !important;
   border-bottom: 1px solid rgba(15,23,42,.10);
@@ -321,7 +319,6 @@ main#content > *{ position: relative; z-index:2; }
   -webkit-backdrop-filter: blur(14px);
 }
 
-/* header text farby */
 .header .brand{ color:#0f172a !important; }
 .header .brand .sub{ color: rgba(15,23,42,.72) !important; }
 .header .menu a{ color: rgba(15,23,42,.86) !important; }
@@ -331,7 +328,6 @@ main#content > *{ position: relative; z-index:2; }
   color: #0f172a !important;
 }
 
-/* header CTA – svetlá varianta */
 .header .cta{
   border: 1px solid rgba(37, 99, 235, .32) !important;
   background: rgba(37, 99, 235, .12) !important;
@@ -348,7 +344,6 @@ main#content > *{ position: relative; z-index:2; }
   color: #0f172a !important;
 }
 
-/* HERO karty */
 .hero .card{
   background: var(--heroCard) !important;
   border: 1px solid rgba(15,23,42,.12) !important;
@@ -357,14 +352,12 @@ main#content > *{ position: relative; z-index:2; }
   -webkit-backdrop-filter: blur(14px);
 }
 
-/* hero text */
 .hero h1,.hero h2,.hero h3{ color:#0f172a !important; }
 .hero p,.hero small,.hero li{ color: rgba(15,23,42,.78) !important; }
 .hero b{ color:#0f172a !important; }
 .hero a{ color: rgba(15,23,42,.86) !important; }
 .hero a:hover{ color:#1d4ed8 !important; }
 
-/* HERO badges – tmavý text */
 .hero .badge{
   border: 1px solid rgba(15,23,42,.12) !important;
   background: rgba(15,23,42,.06) !important;
@@ -372,7 +365,6 @@ main#content > *{ position: relative; z-index:2; }
 }
 .hero .badge b{ color:#0f172a !important; }
 
-/* HERO CTA – svetlá varianta */
 .hero .cta{
   border: 1px solid rgba(37, 99, 235, .32) !important;
   background: rgba(37, 99, 235, .12) !important;
@@ -389,7 +381,6 @@ main#content > *{ position: relative; z-index:2; }
   color: #0f172a !important;
 }
 
-/* hero inline override */
 .hero .card[style],
 .hero .card.pad[style],
 .hero .card.pad-lg[style]{
@@ -397,7 +388,7 @@ main#content > *{ position: relative; z-index:2; }
 }
 
 /* =================================================
-   FOOTER (logo vľavo, text vycentrovaný + odkazy vycentrované)
+   FOOTER – ako header: logo pri texte + celý blok vycentrovaný
 ================================================= */
 .footer{
   padding: 26px 0 40px;
@@ -412,51 +403,39 @@ main#content > *{ position: relative; z-index:2; }
   justify-content:center;
   text-align:center;
 }
+.footer-grid > div:last-child{ display:none !important; }
 
-.footer-grid > div:last-child{
-  display:none !important;
-}
-
-/* brand: 3 stĺpce (logo | centrovaný text | ghost) */
+/* BRAND v footeri: rovnaká logika ako header */
 .footer .brand{
-  display:grid !important;
-  grid-template-columns: 36px 1fr 36px; /* presne pre .brand-logo 36px */
-  align-items:center !important;
-  justify-items:center !important;
-  gap:10px !important;
-  text-align:center !important;
-  color: rgba(238,244,255,.96) !important;
-}
-
-/* logo (img aj badge) – bližšie k textu */
-.footer .brand .brand-logo,
-.footer .brand .brand-badge{
-  grid-column: 1 !important;
-  justify-self:end !important; /* posun k stredu */
-  margin-right:4px !important;
-  filter:none !important;
-}
-
-/* textový blok v strede */
-.footer .brand > span{
-  grid-column: 2 !important;
   display:flex !important;
-  flex-direction:column !important;
-  gap:2px !important;
+  flex-direction:row !important;
   align-items:center !important;
-  justify-content:center !important;
+  justify-content:center !important; /* celý blok na stred */
+  gap:10px !important;
+  text-align:left !important;        /* text vnútri prirodzene */
+  margin-left:auto !important;
+  margin-right:auto !important;
+  width: fit-content !important;
   color: rgba(238,244,255,.96) !important;
 }
 
-/* ghost stĺpec */
-.footer .brand::after{
-  content:"";
-  grid-column: 3;
+/* logo (img aj badge) */
+.footer .brand-logo,
+.footer .brand-badge{
   width:36px;
   height:36px;
+  filter:none !important;
+  margin:0 !important;
 }
 
-/* subtext */
+/* textový blok (názov + sub) */
+.footer .brand > span{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:flex-start !important;
+  gap:2px !important;
+  color: rgba(238,244,255,.96) !important;
+}
 .footer .brand .sub{
   color: rgba(238,244,255,.78) !important;
   font-weight:650;
@@ -469,7 +448,7 @@ main#content > *{ position: relative; z-index:2; }
   color: rgba(238,244,255,.85);
 }
 
-/* vycentrovanie linkov v tom inline "margin-top..." div-e */
+/* odkazy vycentrovať (ten inline div s margin-top) */
 .footer-grid > div > div[style*="margin-top"]{
   display:flex !important;
   justify-content:center !important;
@@ -478,30 +457,12 @@ main#content > *{ position: relative; z-index:2; }
 }
 
 /* linky */
-.footer a{
-  color: rgba(238,244,255,.88) !important;
-}
-.footer a:hover{
-  color:#ffffff !important;
-}
-
-/* CTA ak by sa objavila vo footeri */
-.footer .cta{
-  color: rgba(238,244,255,.96) !important;
-  border-color: rgba(79,140,255,.45) !important;
-  background: rgba(79,140,255,.18) !important;
-}
-.footer .cta:hover{
-  background: rgba(79,140,255,.24) !important;
-  border-color: rgba(79,140,255,.75) !important;
-}
-.footer .cta.secondary{
-  background: rgba(255,255,255,.04) !important;
-  border-color: rgba(255,255,255,.18) !important;
-  color: rgba(238,244,255,.94) !important;
-}
+.footer a{ color: rgba(238,244,255,.88) !important; }
+.footer a:hover{ color:#ffffff !important; }
 
 /* Responsive */
 @media (max-width: 900px){
   .nav{padding: 12px 0}
+  .footer .brand > span{ align-items:center !important; text-align:center !important; }
+  .footer .brand{ text-align:center !important; }
 }
