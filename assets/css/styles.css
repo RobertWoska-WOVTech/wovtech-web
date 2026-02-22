@@ -366,3 +366,47 @@ small{color:var(--muted)}
 @media (max-width: 900px){
   .nav{padding: 12px 0}
 }
+
+/* =================================================
+   BODY STAGE: datacenter pozadie pre celý main (až po footer)
+================================================= */
+
+/* HERO nech ostane svetlé, datacenter ide až do main (sekcie pod hero) */
+main#content{
+  position: relative;
+  isolation: isolate;
+}
+
+/* datacenter vrstva */
+main#content::before{
+  content:"";
+  position: absolute;
+  left: 0; right: 0;
+  top: 420px;              /* začiatok pod hero (doladíš podľa potreby) */
+  bottom: 0;
+  background: url("../img/hero-datacenter.png") center/cover no-repeat;
+  filter: contrast(1.18) saturate(1.10) brightness(1.02);
+  opacity: .40;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* tmavý overlay */
+main#content::after{
+  content:"";
+  position: absolute;
+  left: 0; right: 0;
+  top: 420px;
+  bottom: 0;
+  background:
+    radial-gradient(900px 450px at 40% 10%, rgba(79,140,255,.16), transparent 60%),
+    linear-gradient(180deg, rgba(13,21,38,.70), rgba(13,21,38,.90));
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* všetok obsah main musí byť nad pozadím */
+main#content > *{
+  position: relative;
+  z-index: 2;
+}
