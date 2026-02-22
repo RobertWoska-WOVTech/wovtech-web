@@ -115,24 +115,23 @@ small{color:var(--muted)}
   padding: 56px 0 28px;
   overflow:hidden;
 }
+/* HERO: nech nie je svetlejší než header */
 .hero::before{
-  content:"";
-  position:absolute;
-  inset:-20px;
-  background: url("../img/hero-datacenter.png") center/cover no-repeat;
-  filter: contrast(1.25) saturate(1.15) brightness(1.12);
-  opacity: .55;
-  z-index:-2;
-}
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: radial-gradient(900px 450px at 40% 10%, rgba(79,140,255,.18), transparent 60%),
-              linear-gradient(180deg, rgba(13,21,38,.35), rgba(13,21,38,.70));
-  z-index:-1;
+  /* laptop obrázok nech nie je tak jasný */
+  filter: brightness(.95) contrast(1.06) saturate(1.02) !important;
+  opacity: .85 !important;
 }
 
+.hero::after{
+  /* pridáme trochu tmavší spodok – plynulý prechod do dark sekcií */
+  background:
+    radial-gradient(900px 450px at 30% 10%, rgba(79,140,255,.14), transparent 60%),
+    linear-gradient(180deg,
+      rgba(232,236,242,.90),
+      rgba(205,213,225,.92),
+      rgba(16,26,45,.20)
+    ) !important;
+}
 .hero-grid{display:grid; grid-template-columns: 1.2fr .8fr; gap: 18px;}
 @media (max-width: 900px){.hero-grid{grid-template-columns:1fr}}
 
