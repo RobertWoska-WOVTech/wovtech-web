@@ -427,6 +427,13 @@ main#content > *{ position: relative; z-index:2; }
   margin:0 !important;
 }
 
+/* optické zarovnanie: logo o trochu nižšie */
+.footer .brand-logo,
+.footer .brand-badge{
+  position: relative;
+  top: 2px; /* ak treba, skús 3px */
+}
+
 /* text blok: centrovať názov aj sub nad sebou */
 .footer .brand > span{
   display:flex !important;
