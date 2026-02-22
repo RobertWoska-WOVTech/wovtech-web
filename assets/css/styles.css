@@ -16,6 +16,7 @@
 
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
+
 body{
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
   background:
@@ -235,7 +236,7 @@ small{color:var(--muted)}
 }
 
 /* =================================================
-   OVERRIDES – iba to, čo chceme zmeniť
+   OVERRIDES – finál (header light + hero readable + datacenter stage)
 ================================================= */
 
 /* HEADER: svetlejší, ale nie biely */
@@ -261,7 +262,7 @@ small{color:var(--muted)}
   color: #0f172a !important;
 }
 
-/* HEADER CTA: zladené s hero */
+/* HEADER CTA: zladené */
 .header .cta{
   background: rgba(37, 99, 235, .12) !important;
   color: rgba(15, 23, 42, .92) !important;
@@ -274,62 +275,111 @@ small{color:var(--muted)}
   border-color: rgba(37, 99, 235, .48) !important;
 }
 
-/* HERO: laptop + overlay aby nebolo svetlejšie než header */
-.hero{
-  padding: 64px 0 40px !important;
-}
-
-.hero::before{
-  background: url("../img/hero-laptop.png") center/cover no-repeat !important;
-  filter: brightness(.95) contrast(1.06) saturate(1.02) !important;
-  opacity: .85 !important;
-}
-
-.hero::after{
-  background:
-    radial-gradient(900px 450px at 30% 10%, rgba(79,140,255,.14), transparent 60%),
-    linear-gradient(180deg,
-      rgba(232,236,242,.90),
-      rgba(205,213,225,.92),
-      rgba(16,26,45,.20)
-    ) !important;
-}
-
-/* INFRA BG FIX: datacenter v body sekcii (class="section infra-bg") */
-.section.infra-bg{
+/* =================================================
+   MAIN STAGE: datacenter pozadie pre celý obsah (všetky stránky)
+   — bude vidno pod kartami všade až po footer
+================================================= */
+main#content{
   position: relative;
-  overflow: hidden;
-  isolation: isolate;      /* FIX: správne vrstvenie */
-  padding: 56px 0;         /* aby bolo pozadie vidno */
+  isolation: isolate;
 }
 
-/* obsah nad pozadím */
-.section.infra-bg > .container,
-.section.infra-bg .container{
-  position: relative;
-  z-index: 2;
-}
-
-/* datacenter */
-.section.infra-bg::before{
+/* pozadie datacentra */
+main#content::before{
   content:"";
   position:absolute;
-  inset:-40px;
+  inset:0;
   background: url("../img/hero-datacenter.png") center/cover no-repeat;
-  filter: contrast(1.20) saturate(1.10) brightness(1.05);
-  opacity: .38;            /* jemné, ale viditeľné */
+  filter: contrast(1.25) saturate(1.18) brightness(1.12);
+  opacity: .62;            /* zvýšené – aby bolo reálne vidno */
   z-index: 0;
+  pointer-events:none;
 }
 
-/* overlay */
-.section.infra-bg::after{
+/* overlay – menej tmavý, aby pozadie nezmizlo */
+main#content::after{
   content:"";
   position:absolute;
   inset:0;
   background:
-    radial-gradient(900px 450px at 40% 10%, rgba(79,140,255,.16), transparent 60%),
-    linear-gradient(180deg, rgba(13,21,38,.72), rgba(13,21,38,.88));
+    radial-gradient(1100px 520px at 45% 20%, rgba(79,140,255,.18), transparent 60%),
+    linear-gradient(180deg, rgba(13,21,38,.32), rgba(13,21,38,.84));
   z-index: 1;
+  pointer-events:none;
+}
+
+/* všetok obsah main nad pozadím */
+main#content > *{
+  position: relative;
+  z-index: 2;
+}
+
+/* =================================================
+   HERO: laptop pozadie + čitateľnosť (tmavý text len v hero)
+   (Hero musí byť nad main pozadím a nesmie používať negatívne z-indexy)
+================================================= */
+.hero{
+  padding: 64px 0 40px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate;     /* vlastný stacking context */
+  z-index: 3;             /* nad main background */
+}
+
+/* laptop image */
+.hero::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:-20px !important;
+  background: url("../img/hero-laptop.png") center/cover no-repeat !important;
+  filter: brightness(.98) contrast(1.06) saturate(1.02) !important;
+  opacity: .92 !important;
+  z-index: 0 !important;
+}
+
+/* svetlý overlay */
+.hero::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  background:
+    radial-gradient(900px 450px at 30% 10%, rgba(79,140,255,.14), transparent 60%),
+    linear-gradient(180deg, rgba(232,236,242,.88), rgba(205,213,225,.92), rgba(16,26,45,.14)) !important;
+  z-index: 1 !important;
+}
+
+/* obsah hero nad overlay */
+.hero > .container{
+  position: relative;
+  z-index: 2;
+}
+
+/* hero karta – svetlá, aby text neplával v pozadí */
+.hero .card{
+  background: rgba(255,255,255,.72) !important;
+  border-color: rgba(15,23,42,.10) !important;
+  box-shadow: 0 10px 30px rgba(2,6,23,.18) !important;
+}
+
+/* hero text: tmavý */
+.hero h1, .hero h2, .hero h3{ color:#0f172a !important; }
+.hero p, .hero small{ color: rgba(15,23,42,.78) !important; }
+.hero b{ color:#0f172a !important; }
+
+/* sekundárne CTA v hero nech ladí */
+.hero .cta.secondary{
+  background: rgba(15,23,42,.06) !important;
+  border-color: rgba(15,23,42,.12) !important;
+  color: #0f172a !important;
+}
+
+/* =================================================
+   Vypni staré infra-bg pseudo, ak ti niekde ostalo v HTML
+   (aby nevznikali dvojité vrstvy)
+================================================= */
+.section.infra-bg::before,
+.section.infra-bg::after{
+  display: none !important;
 }
 
 /* FOOTER: tmavý (kontrast k headeru) */
@@ -362,51 +412,7 @@ small{color:var(--muted)}
   filter: drop-shadow(0 10px 18px rgba(0,0,0,.45)) saturate(1.05) contrast(1.05);
 }
 
-/* Responsive: header o kúsok kompaktnejší */
+/* Responsive */
 @media (max-width: 900px){
   .nav{padding: 12px 0}
-}
-
-/* =================================================
-   BODY STAGE: datacenter pozadie pre celý main (až po footer)
-================================================= */
-
-/* HERO nech ostane svetlé, datacenter ide až do main (sekcie pod hero) */
-main#content{
-  position: relative;
-  isolation: isolate;
-}
-
-/* datacenter vrstva */
-main#content::before{
-  content:"";
-  position: absolute;
-  left: 0; right: 0;
-  top: 420px;              /* začiatok pod hero (doladíš podľa potreby) */
-  bottom: 0;
-  background: url("../img/hero-datacenter.png") center/cover no-repeat;
-  filter: contrast(1.18) saturate(1.10) brightness(1.02);
-  opacity: .40;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* tmavý overlay */
-main#content::after{
-  content:"";
-  position: absolute;
-  left: 0; right: 0;
-  top: 420px;
-  bottom: 0;
-  background:
-    radial-gradient(900px 450px at 40% 10%, rgba(79,140,255,.16), transparent 60%),
-    linear-gradient(180deg, rgba(13,21,38,.70), rgba(13,21,38,.90));
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* všetok obsah main musí byť nad pozadím */
-main#content > *{
-  position: relative;
-  z-index: 2;
 }
