@@ -1,41 +1,35 @@
-/* =================================================
-   ROOT / THEME
-================================================= */
 :root{
-  /* DARK BASE */
   --bg:#101a2d;
   --bg2:#0d1526;
 
-  /* GLASS */
-  --card: rgba(255,255,255,.045);
-  --card-border: rgba(255,255,255,.14);
+  --card: rgba(255,255,255,.08);
+  --card2: rgba(255,255,255,.06);
 
-  /* TEXT (dark sections) */
   --text:#eef4ff;
   --muted:#c6d2ee;
-
-  /* LIGHT UI (hero + header) */
-  --light-bg: rgba(226,232,240,.94);
-  --light-bg-2: rgba(214,220,230,.92);
-  --light-text:#0f172a;
-  --light-muted:rgba(15,23,42,.75);
-  --light-border:rgba(15,23,42,.12);
+  --line:rgba(255,255,255,.18);
 
   --accent:#4f8cff;
-  --accent-strong:#2563eb;
+  --accent2:#67f5c6;
 
+  --shadow: 0 10px 30px rgba(0,0,0,.30);
   --radius:18px;
   --max:1120px;
+
+  /* hero “enterprise” materiál */
+  --heroCard: rgba(210,218,230,.92);
+
+  /* body glass – cieľ: aby presvital detail, nie hmla */
+  --glassBg: rgba(255,255,255,.028);
+  --glassBorder: rgba(255,255,255,.16);
+  --glassBlur: 9px;
 }
 
-/* =================================================
-   RESET / BASE
-================================================= */
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 
 body{
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
   background:
     radial-gradient(1200px 650px at 50% -220px, rgba(79,140,255,.16), transparent 70%),
     radial-gradient(900px 550px at 15% 10%, rgba(103,245,198,.10), transparent 65%),
@@ -46,150 +40,112 @@ body{
 
 a{color:inherit;text-decoration:none}
 a:hover{color:var(--accent)}
-
-p{color:var(--muted); margin:0 0 14px}
+p{color:var(--muted); margin: 0 0 14px}
 h1,h2,h3{margin:0 0 10px; line-height:1.15}
-h1{font-size:clamp(28px,4vw,44px)}
-h2{font-size:clamp(22px,3vw,30px)}
-h3{font-size:18px}
+h1{font-size: clamp(28px, 4vw, 44px)}
+h2{font-size: clamp(22px, 3vw, 30px)}
+h3{font-size: 18px}
+small{color:var(--muted)}
+.container{width: min(var(--max), calc(100% - 32px)); margin: 0 auto;}
 
-.container{
-  width:min(var(--max), calc(100% - 32px));
-  margin:0 auto;
-}
+.skip-link{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;}
+.skip-link:focus{left:16px; top:16px; width:auto; height:auto; padding:10px 12px; background: rgba(255,255,255,.10); border:1px solid var(--line); border-radius: 12px; z-index: 9999; color: var(--text);}
 
-.hr{
-  height:1px;
-  background:rgba(255,255,255,.16);
-  margin:14px 0;
-}
-
-/* =================================================
-   HEADER (LIGHT)
-================================================= */
+/* =========================
+   HEADER
+========================= */
 .header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  backdrop-filter:blur(14px);
-  background:linear-gradient(180deg,var(--light-bg),var(--light-bg-2));
-  border-bottom:1px solid var(--light-border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  /* rovnaký materiál ako hero karta */
+  background: var(--heroCard) !important;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid rgba(15,23,42,.10);
 }
 
-.nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:14px 0;
-  gap:12px;
-}
+.nav{display:flex; align-items:center; justify-content:space-between; padding: 14px 0; gap: 12px;}
 
 .brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:900;
-  color:var(--light-text);
+  display:flex; align-items:center; gap:10px;
+  font-weight:900; letter-spacing:.2px;
+  color:#0f172a;
 }
-
-.brand .sub{
-  display:block;
-  font-size:12px;
-  font-weight:600;
-  color:var(--light-muted);
-}
+.brand span{display:block}
+.brand .sub{font-weight:650; color: rgba(15,23,42,.72); font-size:12px; margin-top:-2px}
 
 .brand-logo{
-  width:36px;
-  height:36px;
+  width:36px; height:36px;
   border-radius:10px;
+  object-fit:contain;
+  display:inline-block;
+  filter: drop-shadow(0 6px 14px rgba(15,23,42,.18));
 }
 
-.menu{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
+.brand-badge{
+  width:38px; height:38px;
+  border-radius:10px;
+  background: url("../img/logo-mark.png") center / contain no-repeat !important;
+  box-shadow:none !important;
+  border: 1px solid rgba(15,23,42,.10);
+  filter: drop-shadow(0 6px 12px rgba(15,23,42,.12));
 }
 
+.menu{display:flex; align-items:center; gap: 10px; flex-wrap: wrap; justify-content: flex-end;}
 .menu a{
-  padding:8px 10px;
-  border-radius:12px;
-  color:rgba(15,23,42,.85);
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  color: rgba(15,23,42,.86);
 }
-
 .menu a:hover{
-  background:rgba(15,23,42,.06);
+  border-color: rgba(15,23,42,.12);
+  background: rgba(15,23,42,.06);
+  color: #0f172a;
 }
 
 .cta{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  padding:10px 14px;
-  border-radius:14px;
-  border:1px solid rgba(37,99,235,.32);
-  background:rgba(37,99,235,.12);
-  color:rgba(15,23,42,.92);
-  font-weight:800;
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  padding: 10px 14px; border-radius: 14px;
+  border: 1px solid rgba(37, 99, 235, .32);
+  background: rgba(37, 99, 235, .12);
+  box-shadow: none;
+  color: rgba(15, 23, 42, .92);
+  font-weight: 800;
 }
-
 .cta:hover{
-  background:rgba(37,99,235,.16);
+  background: rgba(37, 99, 235, .16);
+  border-color: rgba(37, 99, 235, .48);
 }
-
 .cta.secondary{
-  background:rgba(15,23,42,.06);
-  border-color:var(--light-border);
+  background: rgba(15,23,42,.06);
+  border-color: rgba(15,23,42,.12);
+  color: #0f172a;
 }
+.cta.small{padding:8px 12px; border-radius: 12px; font-weight:800}
 
-/* =================================================
-   MAIN BACKGROUND (DATACENTER)
-================================================= */
-main#content{
-  position:relative;
-  isolation:isolate;
-}
-
-main#content::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:url("../img/hero-datacenter.png") center 28% / cover no-repeat;
-  filter:contrast(1.4) saturate(1.35);
-  opacity:.9;
-  z-index:0;
-}
-
-main#content::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(180deg,rgba(255,255,255,.05),rgba(0,0,0,.22)),
-    radial-gradient(1200px 560px at 45% 20%, rgba(79,140,255,.22), transparent 60%);
-  z-index:1;
-}
-
-main#content > *{
-  position:relative;
-  z-index:2;
-}
-
-/* =================================================
-   HERO (LIGHT UI)
-================================================= */
+/* =========================
+   HERO
+========================= */
 .hero{
-  position:relative;
-  padding:64px 0 42px;
+  position: relative;
+  padding: 64px 0 40px;
+  overflow:hidden;
+  isolation:isolate;
+  z-index:3;
 }
 
 .hero::before{
   content:"";
   position:absolute;
   inset:-20px;
-  background:url("../img/hero-laptop.png") center/cover no-repeat;
-  opacity:.9;
+  background: url("../img/hero-laptop.png") center/cover no-repeat;
+  filter: brightness(.97) contrast(1.08) saturate(1.02);
+  opacity: .92;
   z-index:0;
 }
 
@@ -198,127 +154,202 @@ main#content > *{
   position:absolute;
   inset:0;
   background:
+    radial-gradient(900px 450px at 30% 10%, rgba(79,140,255,.14), transparent 60%),
     linear-gradient(180deg,
-      rgba(226,232,240,.88),
-      rgba(214,220,230,.94),
-      rgba(16,26,45,.12)
+      rgba(224,231,242,.80),
+      rgba(206,214,226,.90),
+      rgba(16,26,45,.14)
     );
   z-index:1;
 }
 
-.hero > .container{
-  position:relative;
-  z-index:2;
-}
+.hero > .container{position:relative; z-index:2;}
 
-/* HERO TEXT */
-.hero,
-.hero p,
-.hero li,
-.hero small{
-  color:var(--light-muted);
-}
+.hero-grid{display:grid; grid-template-columns: 1.2fr .8fr; gap: 18px;}
+@media (max-width: 900px){.hero-grid{grid-template-columns:1fr}}
 
-.hero h1,
-.hero h2,
-.hero h3,
-.hero b{
-  color:var(--light-text);
-}
-
-/* =================================================
-   CARDS
-================================================= */
-.card{
-  background:var(--card);
-  backdrop-filter:blur(18px);
-  border:1px solid var(--card-border);
-  border-radius:var(--radius);
-  box-shadow:0 14px 36px rgba(2,6,23,.45);
-}
-
-.card.pad{padding:18px}
-.card.pad-lg{padding:22px}
-
-/* HERO CARDS (LIGHT) */
+/* hero karty */
 .hero .card{
-  background:var(--light-bg);
-  border:1px solid var(--light-border);
-  box-shadow:0 12px 30px rgba(2,6,23,.18);
+  background: var(--heroCard) !important;
+  border: 1px solid rgba(15,23,42,.12) !important;
+  box-shadow: 0 12px 30px rgba(2,6,23,.18) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
-/* =================================================
-   LISTS / BADGES
-================================================= */
-.list{
-  padding-left:18px;
-  margin:0;
+/* hero text */
+.hero h1,.hero h2,.hero h3{ color:#0f172a !important; }
+.hero p,.hero small,.hero li{ color: rgba(15,23,42,.78) !important; }
+.hero b{ color:#0f172a !important; }
+.hero a{ color: rgba(15,23,42,.86) !important; }
+.hero a:hover{ color:#1d4ed8 !important; }
+
+/* =========================
+   CARDS (global)
+========================= */
+.card{
+  border-radius: var(--radius);
+  padding: 0;
 }
 
-.list li{margin:8px 0}
+/* klasické pady */
+.card.pad{padding: 18px}
+.card.pad-lg{padding: 22px}
 
-.badges{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:10px;
+/* =========================
+   BODY STAGE (datacenter background)
+========================= */
+main#content{
+  position: relative;
+  isolation: isolate;
 }
 
-.badge{
-  padding:7px 10px;
-  border-radius:999px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.14);
-  font-size:13px;
+/* datacenter vrstva */
+main#content::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: url("../img/hero-datacenter.png") center/cover no-repeat;
+  background-position: center 20% !important; /* posun hore */
+  filter: contrast(1.85) saturate(1.65) brightness(1.06);
+  opacity: .98;
+  z-index:0;
+  pointer-events:none;
 }
 
-.hero .badge{
-  background:rgba(15,23,42,.06);
-  border:1px solid var(--light-border);
-  color:var(--light-text);
+/* overlay – slabší, aby pozadie nezomrelo */
+main#content::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,
+      rgba(255,255,255,.03),
+      rgba(255,255,255,0) 45%,
+      rgba(0,0,0,.08)
+    ),
+    radial-gradient(1200px 560px at 45% 20%, rgba(79,140,255,.16), transparent 62%),
+    linear-gradient(180deg, rgba(13,21,38,.08), rgba(13,21,38,.38));
+  z-index:1;
+  pointer-events:none;
 }
 
-/* =================================================
-   SECTIONS
-================================================= */
-.section{padding:22px 0}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
+/* desktop “parallax” */
+@media (min-width: 1100px){
+  main#content::before{ background-attachment: fixed; }
 }
 
-@media(max-width:900px){
-  .grid{grid-template-columns:1fr}
+/* obsah nad pozadím */
+main#content > *{ position: relative; z-index:2; }
+
+/* =========================
+   REAL GLASS: aby presvital detail (kľúč!)
+   - menší blur
+   - slabý overlay
+========================= */
+.section .card,
+.section .service,
+.section .notice,
+.section .code,
+.section .badge{
+  backdrop-filter: blur(var(--glassBlur));
+  -webkit-backdrop-filter: blur(var(--glassBlur));
 }
 
+/* hlavné karty v sekciách */
+.section .card{
+  background: var(--glassBg) !important;
+  border: 1px solid var(--glassBorder) !important;
+  box-shadow:
+    0 14px 36px rgba(2,6,23,.42),
+    inset 0 1px 0 rgba(255,255,255,.06) !important;
+}
+
+/* service cards (grid) */
 .service{
-  padding:16px;
-  border-radius:var(--radius);
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.12);
+  padding: 16px;
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.022) !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  box-shadow: 0 12px 28px rgba(2,6,23,.38);
+}
+.service h3{margin-bottom: 8px}
+.service p{margin-bottom: 12px; color: rgba(238,244,255,.84) !important;}
+.service a.link{color: var(--accent); font-weight: 850;}
+
+/* badges v dark sekciách */
+.badges{display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px;}
+.badge{
+  display:inline-flex; gap:8px; align-items:center;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.04);
+  color: rgba(238,244,255,.90);
+  font-size: 13px;
+}
+.badge b{color: var(--text); font-weight: 850}
+
+/* =========================
+   SECTIONS / LAYOUT
+========================= */
+.section{padding: 22px 0}
+.grid{display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px;}
+@media (max-width: 900px){.grid{grid-template-columns:1fr}}
+
+.two-col{display:grid; grid-template-columns: 1fr 1fr; gap: 12px;}
+@media (max-width: 900px){.two-col{grid-template-columns:1fr}}
+
+.list{margin: 0; padding-left: 18px; color: rgba(238,244,255,.84);}
+.list li{margin: 8px 0}
+
+.hr{height:1px; background: rgba(255,255,255,.14); margin: 14px 0}
+
+.notice{
+  font-size: 13px;
+  color: rgba(238,244,255,.82);
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.035);
+  padding: 12px;
+  border-radius: 14px;
 }
 
-.service a{color:var(--accent); font-weight:800}
+.code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 13px;
+  color: var(--text);
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.14);
+  padding: 2px 6px;
+  border-radius: 8px;
+}
 
-/* =================================================
+/* =========================
+   INLINE BACKGROUND OVERRIDE (dôležité!)
+   - zbije tie style="background: rgba(...)" v kontakt.html
+========================= */
+.section .card[style],
+.section .card.pad[style],
+.section .card.pad-lg[style]{
+  background: var(--glassBg) !important;
+}
+
+/* hero inline override */
+.hero .card[style],
+.hero .card.pad[style],
+.hero .card.pad-lg[style]{
+  background: var(--heroCard) !important;
+}
+
+/* =========================
    FOOTER
-================================================= */
+========================= */
 .footer{
-  background:#0b1220;
-  border-top:1px solid rgba(255,255,255,.14);
-  padding:26px 0 40px;
+  padding: 26px 0 40px;
+  border-top: 1px solid rgba(255,255,255,.14);
+  margin-top: 22px;
+  background: #0b1220;
 }
-
-.footer,
-.footer p,
-.footer a,
-.footer small{
-  color:rgba(238,244,255,.86);
-}
-
-.footer a:hover{color:#fff}
 
 .footer-grid{
   display:flex;
@@ -326,9 +357,22 @@ main#content > *{
   text-align:center;
 }
 
-/* =================================================
-   RESPONSIVE
-================================================= */
-@media(max-width:900px){
-  .nav{padding:12px 0}
+.footer-grid > div:last-child{
+  display:none !important;
+}
+
+.footer a{color: rgba(238,244,255,.88)}
+.footer a:hover{color: #ffffff}
+
+.footer-grid .brand{ justify-content:center; }
+
+.footer-grid small{
+  display:block;
+  margin-top:8px;
+  color: rgba(238,244,255,.85);
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .nav{padding: 12px 0}
 }
