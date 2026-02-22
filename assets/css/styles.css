@@ -16,6 +16,9 @@
   --shadow: 0 10px 30px rgba(0,0,0,.30);
   --radius:18px;
   --max:1120px;
+
+  /* HERO karty – referenčná “enterprise” farba */
+  --heroCard: rgba(210,218,230,.92);
 }
 
 *{box-sizing:border-box}
@@ -146,7 +149,7 @@ small{color:var(--muted)}
 @media (max-width: 900px){.hero-grid{grid-template-columns:1fr}}
 
 /* =========================
-   CARDS (pôvodné)
+   CARDS (base)
 ========================= */
 .card{
   background: rgba(255,255,255,.08);
@@ -246,15 +249,10 @@ small{color:var(--muted)}
 }
 
 /* =================================================
-   OVERRIDES – finál (header = hero card + datacenter equalized)
+   OVERRIDES – finál (header = hero card + datacenter equalized + viac transparentné karty)
 ================================================= */
 
-/* HERO karty – referenčná “enterprise” farba */
-:root{
-  --heroCard: rgba(210,218,230,.92);
-}
-
-/* HEADER – rovnaký materiál ako hero karty */
+/* HEADER – rovnaký materiál ako hero karty (už nie je tmavší než hero) */
 .header{
   position: sticky;
   top: 0;
@@ -312,9 +310,9 @@ main#content::before{
   position:absolute;
   inset:0;
   background: url("../img/hero-datacenter.png") center/cover no-repeat;
-  background-position: center 28% !important; /* posun mierne hore, aby sa nebral len tmavý spodok */
+  background-position: center 28% !important;
   filter: contrast(1.55) saturate(1.45) brightness(1.12);
-  opacity: .92;  /* zvýšené */
+  opacity: .92;
   z-index: 0;
   pointer-events:none;
 }
@@ -325,15 +323,12 @@ main#content::after{
   position:absolute;
   inset:0;
   background:
-    /* equalizer: jemne vyrovná (bez toho, aby prebil detaily) */
     linear-gradient(180deg,
       rgba(255,255,255,.07),
       rgba(255,255,255,.00) 40%,
       rgba(0,0,0,.14)
     ),
-    /* modrý “glow” pre datacenter highlights */
     radial-gradient(1200px 560px at 45% 20%, rgba(79,140,255,.22), transparent 62%),
-    /* tmavý gradient – o niečo slabší než predtým */
     linear-gradient(180deg, rgba(13,21,38,.14), rgba(13,21,38,.58));
   z-index: 1;
   pointer-events:none;
@@ -354,7 +349,6 @@ main#content > *{
 
 /* =================================================
    HERO: laptop + čitateľnosť
-   (karty NIE sú bledšie než header, text vždy viditeľný)
 ================================================= */
 .hero{
   padding: 64px 0 40px !important;
@@ -403,8 +397,6 @@ main#content > *{
 .hero h1,.hero h2,.hero h3{ color:#0f172a !important; }
 .hero p,.hero small{ color: rgba(15,23,42,.78) !important; }
 .hero b{ color:#0f172a !important; }
-
-/* HERO linky/listy – aby nič nezmizlo */
 .hero a{ color: rgba(15,23,42,.86) !important; }
 .hero a:hover{ color: #1d4ed8 !important; }
 .hero ul, .hero li{ color: rgba(15,23,42,.78) !important; }
@@ -432,6 +424,26 @@ main#content > *{
   background: rgba(15,23,42,.06) !important;
   border-color: rgba(15,23,42,.12) !important;
   color: #0f172a !important;
+}
+
+/* =================================================
+   GLASS BOOST: viac transparentné bloky v body (aby datacenter presvital)
+   (tvoj request – toto je ten kľúčový “feel” fix)
+================================================= */
+.card{
+  background: rgba(255,255,255,.055) !important; /* bolo .08 */
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  box-shadow:
+    0 12px 32px rgba(2,6,23,.38),
+    inset 0 1px 0 rgba(255,255,255,.04) !important;
+}
+
+/* menšie bloky (service cards) tiež pustia viac pozadia */
+.service{
+  background: rgba(255,255,255,.045) !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
 }
 
 /* =================================================
