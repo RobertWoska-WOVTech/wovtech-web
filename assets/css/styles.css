@@ -431,7 +431,7 @@ main#content > *{ position: relative; z-index:2; }
 .footer .brand-logo,
 .footer .brand-badge{
   position: relative;
-  top: 2px; /* ak treba, skús 3px */
+  top: 3px; /* ak treba, skús 3px */
 }
 
 /* text blok: centrovať názov aj sub nad sebou */
