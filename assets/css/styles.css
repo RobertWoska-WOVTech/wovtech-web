@@ -388,7 +388,7 @@ main#content > *{ position: relative; z-index:2; }
 }
 
 /* =================================================
-   FOOTER – ako header: logo pri texte + celý blok vycentrovaný
+   FOOTER – logo pri texte, ale názov centrovaný nad scope
 ================================================= */
 .footer{
   padding: 26px 0 40px;
@@ -405,21 +405,20 @@ main#content > *{ position: relative; z-index:2; }
 }
 .footer-grid > div:last-child{ display:none !important; }
 
-/* BRAND v footeri: rovnaká logika ako header */
+/* brand blok vycentrovaný ako celok */
 .footer .brand{
   display:flex !important;
   flex-direction:row !important;
-  align-items:center !important;
-  justify-content:center !important; /* celý blok na stred */
+  align-items:flex-start !important;    /* logo hore, text blok si rieši center */
+  justify-content:center !important;
   gap:10px !important;
-  text-align:left !important;        /* text vnútri prirodzene */
+  width: fit-content !important;
   margin-left:auto !important;
   margin-right:auto !important;
-  width: fit-content !important;
   color: rgba(238,244,255,.96) !important;
 }
 
-/* logo (img aj badge) */
+/* logo */
 .footer .brand-logo,
 .footer .brand-badge{
   width:36px;
@@ -428,14 +427,17 @@ main#content > *{ position: relative; z-index:2; }
   margin:0 !important;
 }
 
-/* textový blok (názov + sub) */
+/* text blok: centrovať názov aj sub nad sebou */
 .footer .brand > span{
   display:flex !important;
   flex-direction:column !important;
-  align-items:flex-start !important;
+  align-items:center !important;   /* toto je kľúč */
+  text-align:center !important;    /* toto je kľúč */
   gap:2px !important;
   color: rgba(238,244,255,.96) !important;
 }
+
+/* sub */
 .footer .brand .sub{
   color: rgba(238,244,255,.78) !important;
   font-weight:650;
@@ -448,7 +450,7 @@ main#content > *{ position: relative; z-index:2; }
   color: rgba(238,244,255,.85);
 }
 
-/* odkazy vycentrovať (ten inline div s margin-top) */
+/* odkazy vycentrovať (inline div s margin-top) */
 .footer-grid > div > div[style*="margin-top"]{
   display:flex !important;
   justify-content:center !important;
@@ -463,6 +465,4 @@ main#content > *{ position: relative; z-index:2; }
 /* Responsive */
 @media (max-width: 900px){
   .nav{padding: 12px 0}
-  .footer .brand > span{ align-items:center !important; text-align:center !important; }
-  .footer .brand{ text-align:center !important; }
 }
