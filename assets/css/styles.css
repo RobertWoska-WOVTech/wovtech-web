@@ -52,25 +52,21 @@ small{color:var(--muted)}
 .skip-link:focus{left:16px; top:16px; width:auto; height:auto; padding:10px 12px; background: rgba(255,255,255,.10); border:1px solid var(--line); border-radius: 12px; z-index: 9999; color: var(--text);}
 
 /* =========================
-   HEADER
+   HEADER (base)
 ========================= */
 .header{
   position: sticky;
   top: 0;
   z-index: 50;
-
-  /* rovnaký materiál ako hero karta */
-  background: var(--heroCard) !important;
-
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  border-bottom: 1px solid rgba(15,23,42,.10);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(16, 26, 45, .78);
+  border-bottom: 1px solid var(--line);
 }
 
 .nav{display:flex; align-items:center; justify-content:space-between; padding: 14px 0; gap: 12px;}
 
-/* ✅ FIX: .brand NESMIE byť globálne tmavý (footer ho potrebuje svetlý) */
+/* BRAND – BASE je pre tmavé pozadie (footer/sekcie) */
 .brand{
   display:flex; align-items:center; gap:10px;
   font-weight:900; letter-spacing:.2px;
@@ -79,16 +75,12 @@ small{color:var(--muted)}
 .brand span{display:block}
 .brand .sub{font-weight:650; color: var(--muted); font-size:12px; margin-top:-2px}
 
-/* header má tmavý text */
-.header .brand{ color:#0f172a; }
-.header .brand .sub{ color: rgba(15,23,42,.72); }
-
 .brand-logo{
   width:36px; height:36px;
   border-radius:10px;
   object-fit:contain;
   display:inline-block;
-  filter: drop-shadow(0 6px 14px rgba(15,23,42,.18));
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,.35));
 }
 
 .brand-badge{
@@ -96,8 +88,6 @@ small{color:var(--muted)}
   border-radius:10px;
   background: url("../img/logo-mark.png") center / contain no-repeat !important;
   box-shadow:none !important;
-  border: 1px solid rgba(15,23,42,.10);
-  filter: drop-shadow(0 6px 12px rgba(15,23,42,.12));
 }
 
 /* MENU */
@@ -106,37 +96,38 @@ small{color:var(--muted)}
   padding: 8px 10px;
   border-radius: 12px;
   border: 1px solid transparent;
-  color: rgba(15,23,42,.86);
+  color: rgba(238,244,255,.92);
 }
 .menu a:hover{
-  border-color: rgba(15,23,42,.12);
-  background: rgba(15,23,42,.06);
-  color: #0f172a;
+  border-color: var(--line);
+  background: rgba(255,255,255,.05);
+  color: var(--text);
 }
 
-/* CTA */
+/* CTA – BASE pre tmavé pozadie (sekcie/footer) */
 .cta{
   display:inline-flex; align-items:center; justify-content:center; gap:10px;
   padding: 10px 14px; border-radius: 14px;
-  border: 1px solid rgba(37, 99, 235, .32);
-  background: rgba(37, 99, 235, .12);
-  box-shadow: none;
-  color: rgba(15, 23, 42, .92);
+  border: 1px solid rgba(79,140,255,.45);
+  background: rgba(79,140,255,.18);
+  box-shadow: 0 8px 24px rgba(0,0,0,.22);
+  color: rgba(238,244,255,.96);
   font-weight: 800;
 }
 .cta:hover{
-  background: rgba(37, 99, 235, .16);
-  border-color: rgba(37, 99, 235, .48);
+  border-color: rgba(79,140,255,.75);
+  background: rgba(79,140,255,.24);
 }
 .cta.secondary{
-  background: rgba(15,23,42,.06);
-  border-color: rgba(15,23,42,.12);
-  color: #0f172a;
+  background: rgba(255,255,255,.04);
+  border-color: rgba(255,255,255,.18);
+  box-shadow: none;
+  color: rgba(238,244,255,.94);
 }
 .cta.small{padding:8px 12px; border-radius: 12px; font-weight:800}
 
 /* =========================
-   HERO
+   HERO (base)
 ========================= */
 .hero{
   position: relative;
@@ -175,30 +166,6 @@ small{color:var(--muted)}
 .hero-grid{display:grid; grid-template-columns: 1.2fr .8fr; gap: 18px;}
 @media (max-width: 900px){.hero-grid{grid-template-columns:1fr}}
 
-/* hero karty */
-.hero .card{
-  background: var(--heroCard) !important;
-  border: 1px solid rgba(15,23,42,.12) !important;
-  box-shadow: 0 12px 30px rgba(2,6,23,.18) !important;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-}
-
-/* hero text */
-.hero h1,.hero h2,.hero h3{ color:#0f172a !important; }
-.hero p,.hero small,.hero li{ color: rgba(15,23,42,.78) !important; }
-.hero b{ color:#0f172a !important; }
-.hero a{ color: rgba(15,23,42,.86) !important; }
-.hero a:hover{ color:#1d4ed8 !important; }
-
-/* ✅ FIX: badges v HERO musia mať tmavý text (inak „biele na svetlom“) */
-.hero .badge{
-  border: 1px solid rgba(15,23,42,.14) !important;
-  background: rgba(15,23,42,.06) !important;
-  color: rgba(15,23,42,.88) !important;
-}
-.hero .badge b{ color:#0f172a !important; }
-
 /* =========================
    CARDS (global)
 ========================= */
@@ -206,8 +173,6 @@ small{color:var(--muted)}
   border-radius: var(--radius);
   padding: 0;
 }
-
-/* klasické pady */
 .card.pad{padding: 18px}
 .card.pad-lg{padding: 22px}
 
@@ -225,14 +190,14 @@ main#content::before{
   position:absolute;
   inset:0;
   background: url("../img/hero-datacenter.png") center/cover no-repeat;
-  background-position: center 20% !important; /* posun hore */
+  background-position: center 20% !important;
   filter: contrast(1.85) saturate(1.65) brightness(1.06);
   opacity: .98;
   z-index:0;
   pointer-events:none;
 }
 
-/* overlay – slabší, aby pozadie nezomrelo */
+/* overlay */
 main#content::after{
   content:"";
   position:absolute;
@@ -249,18 +214,14 @@ main#content::after{
   pointer-events:none;
 }
 
-/* desktop “parallax” */
 @media (min-width: 1100px){
   main#content::before{ background-attachment: fixed; }
 }
 
-/* obsah nad pozadím */
 main#content > *{ position: relative; z-index:2; }
 
 /* =========================
-   REAL GLASS: aby presvital detail (kľúč!)
-   - menší blur
-   - slabý overlay
+   REAL GLASS (sekcie)
 ========================= */
 .section .card,
 .section .service,
@@ -292,7 +253,7 @@ main#content > *{ position: relative; z-index:2; }
 .service p{margin-bottom: 12px; color: rgba(238,244,255,.84) !important;}
 .service a.link{color: var(--accent); font-weight: 850;}
 
-/* badges v dark sekciách */
+/* badges (dark sekcie) */
 .badges{display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px;}
 .badge{
   display:inline-flex; gap:8px; align-items:center;
@@ -300,10 +261,10 @@ main#content > *{ position: relative; z-index:2; }
   border-radius: 999px;
   border: 1px solid rgba(255,255,255,.16);
   background: rgba(255,255,255,.04);
-  color: rgba(238,244,255,.90);
+  color: rgba(238,244,255,.92);
   font-size: 13px;
 }
-.badge b{color: var(--text); font-weight: 850}
+.badge b{color: var(--text); font-weight: 850;}
 
 /* =========================
    SECTIONS / LAYOUT
@@ -340,13 +301,94 @@ main#content > *{ position: relative; z-index:2; }
 }
 
 /* =========================
-   INLINE BACKGROUND OVERRIDE (dôležité!)
+   INLINE BACKGROUND OVERRIDE
    - zbije tie style="background: rgba(...)" v kontakt.html
 ========================= */
 .section .card[style],
 .section .card.pad[style],
 .section .card.pad-lg[style]{
   background: var(--glassBg) !important;
+}
+
+/* =========================
+   OVERRIDES – LIGHT AREAS (HEADER + HERO)
+   - opravuje neviditeľný text v svetlých kartách
+========================= */
+
+/* HEADER: rovnaký materiál ako hero karta */
+.header{
+  background: var(--heroCard) !important;
+  border-bottom: 1px solid rgba(15,23,42,.10);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* header text farby */
+.header .brand{ color:#0f172a; }
+.header .brand .sub{ color: rgba(15,23,42,.72); }
+.header .menu a{ color: rgba(15,23,42,.86); }
+.header .menu a:hover{
+  border-color: rgba(15,23,42,.12);
+  background: rgba(15,23,42,.06);
+  color: #0f172a;
+}
+
+/* header CTA – svetlá varianta */
+.header .cta{
+  border: 1px solid rgba(37, 99, 235, .32);
+  background: rgba(37, 99, 235, .12);
+  box-shadow: none;
+  color: rgba(15, 23, 42, .92);
+}
+.header .cta:hover{
+  background: rgba(37, 99, 235, .16);
+  border-color: rgba(37, 99, 235, .48);
+}
+.header .cta.secondary{
+  background: rgba(15,23,42,.06);
+  border-color: rgba(15,23,42,.12);
+  color: #0f172a;
+}
+
+/* HERO karty */
+.hero .card{
+  background: var(--heroCard) !important;
+  border: 1px solid rgba(15,23,42,.12) !important;
+  box-shadow: 0 12px 30px rgba(2,6,23,.18) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* hero text */
+.hero h1,.hero h2,.hero h3{ color:#0f172a !important; }
+.hero p,.hero small,.hero li{ color: rgba(15,23,42,.78) !important; }
+.hero b{ color:#0f172a !important; }
+.hero a{ color: rgba(15,23,42,.86) !important; }
+.hero a:hover{ color:#1d4ed8 !important; }
+
+/* HERO badges – tmavý text (aby nezmizol na svetlej karte) */
+.hero .badge{
+  border: 1px solid rgba(15,23,42,.12) !important;
+  background: rgba(15,23,42,.06) !important;
+  color: rgba(15,23,42,.86) !important;
+}
+.hero .badge b{ color:#0f172a !important; }
+
+/* HERO CTA – svetlá varianta */
+.hero .cta{
+  border: 1px solid rgba(37, 99, 235, .32);
+  background: rgba(37, 99, 235, .12);
+  box-shadow: none;
+  color: rgba(15, 23, 42, .92);
+}
+.hero .cta:hover{
+  background: rgba(37, 99, 235, .16);
+  border-color: rgba(37, 99, 235, .48);
+}
+.hero .cta.secondary{
+  background: rgba(15,23,42,.06);
+  border-color: rgba(15,23,42,.12);
+  color: #0f172a;
 }
 
 /* hero inline override */
@@ -358,6 +400,8 @@ main#content > *{ position: relative; z-index:2; }
 
 /* =========================
    FOOTER
+   - FIX: brand bol tmavý → neviditeľný
+   - FIX: CTA bol svetlý → neviditeľný
 ========================= */
 .footer{
   padding: 26px 0 40px;
@@ -376,19 +420,33 @@ main#content > *{ position: relative; z-index:2; }
   display:none !important;
 }
 
+/* footer brand + sub musia byť svetlé */
+.footer .brand{ color: rgba(238,244,255,.96) !important; }
+.footer .brand .sub{ color: rgba(238,244,255,.78) !important; }
+
 .footer a{color: rgba(238,244,255,.88)}
 .footer a:hover{color: #ffffff}
-
-.footer-grid .brand{ justify-content:center; }
-
-/* ✅ FIX: footer brand musí byť svetlý (už to rieši globálny .brand), ale nech je to isté aj explicitne */
-.footer .brand{ color: rgba(238,244,255,.95); }
-.footer .brand .sub{ color: rgba(238,244,255,.80); }
 
 .footer-grid small{
   display:block;
   margin-top:8px;
   color: rgba(238,244,255,.85);
+}
+
+/* footer CTA nech je čitateľné na tmavom */
+.footer .cta{
+  color: rgba(238,244,255,.96) !important;
+  border-color: rgba(79,140,255,.45) !important;
+  background: rgba(79,140,255,.18) !important;
+}
+.footer .cta:hover{
+  background: rgba(79,140,255,.24) !important;
+  border-color: rgba(79,140,255,.75) !important;
+}
+.footer .cta.secondary{
+  background: rgba(255,255,255,.04) !important;
+  border-color: rgba(255,255,255,.18) !important;
+  color: rgba(238,244,255,.94) !important;
 }
 
 /* Responsive */
