@@ -19,6 +19,11 @@
 
   /* HERO karty – referenčná “enterprise” farba */
   --heroCard: rgba(210,218,230,.92);
+
+  /* „glass“ nastavenia pre body karty (aby presvital detail) */
+  --glassBg: rgba(255,255,255,.035);
+  --glassBorder: rgba(255,255,255,.18);
+  --glassBlur: 10px;
 }
 
 *{box-sizing:border-box}
@@ -249,25 +254,19 @@ small{color:var(--muted)}
 }
 
 /* =================================================
-   OVERRIDES – finál (header = hero card + datacenter equalized + viac transparentné karty)
+   OVERRIDES – finál
+   (header = hero card + datacenter equalized + reálne presvitanie)
 ================================================= */
 
-/* HEADER – rovnaký materiál ako hero karty (už nie je tmavší než hero) */
+/* HEADER – dorovnané na hero-card “materiál” (už nie tmavší) */
 .header{
   position: sticky;
   top: 0;
   z-index: 50;
-
-  background:
-    linear-gradient(180deg,
-      rgba(226,232,240,.96),
-      rgba(214,220,230,.94)
-    );
-
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  border-bottom: 1px solid rgba(15,23,42,.10);
+  background: rgba(210,218,230,.92) !important; /* rovnaké ako hero card */
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border-bottom: 1px solid rgba(15,23,42,.10) !important;
 }
 
 .header .brand,
@@ -296,49 +295,45 @@ small{color:var(--muted)}
 
 /* =================================================
    MAIN STAGE: datacenter pozadie pre celý obsah
-   - fix pozície (aby nebral len tmavý spodok)
-   - equalizer overlay vyrovná svetlo/tmu
+   - background-position posunuté hore
+   - overlay zoslabnutý (aby sa nestratil detail)
 ================================================= */
 main#content{
   position: relative;
   isolation: isolate;
 }
 
-/* datacenter – silnejšie + konzistentnejšie */
 main#content::before{
   content:"";
   position:absolute;
   inset:0;
   background: url("../img/hero-datacenter.png") center/cover no-repeat;
-  background-position: center 28% !important;
-  filter: contrast(1.55) saturate(1.45) brightness(1.12);
-  opacity: .92;
+  background-position: center 22% !important; /* aby sa nebral len tmavý spodok */
+  filter: contrast(1.75) saturate(1.55) brightness(1.08) !important;
+  opacity: .98 !important;
   z-index: 0;
   pointer-events:none;
 }
 
-/* overlay – menej “dusí” pozadie, ale stále drží tmavý look */
 main#content::after{
   content:"";
   position:absolute;
   inset:0;
   background:
     linear-gradient(180deg,
-      rgba(255,255,255,.07),
-      rgba(255,255,255,.00) 40%,
-      rgba(0,0,0,.14)
+      rgba(255,255,255,.05),
+      rgba(255,255,255,.00) 42%,
+      rgba(0,0,0,.10)
     ),
-    radial-gradient(1200px 560px at 45% 20%, rgba(79,140,255,.22), transparent 62%),
-    linear-gradient(180deg, rgba(13,21,38,.14), rgba(13,21,38,.58));
+    radial-gradient(1200px 560px at 45% 20%, rgba(79,140,255,.18), transparent 62%),
+    linear-gradient(180deg, rgba(13,21,38,.10), rgba(13,21,38,.46)) !important;
   z-index: 1;
   pointer-events:none;
 }
 
-/* VOLITEĽNÉ: na desktope spraví pozadie výraznejšie (parallax feel) */
-@media (min-width: 900px){
-  main#content::before{
-    background-attachment: fixed;
-  }
+/* parallax feel (desktop) */
+@media (min-width: 1100px){
+  main#content::before{ background-attachment: fixed; }
 }
 
 /* obsah nad pozadím */
@@ -386,7 +381,7 @@ main#content > *{
 
 .hero > .container{ position: relative; z-index: 2; }
 
-/* HERO karty – rovnaký tón ako header */
+/* HERO karty */
 .hero .card{
   background: var(--heroCard) !important;
   border: 1px solid rgba(15,23,42,.12) !important;
@@ -427,24 +422,30 @@ main#content > *{
 }
 
 /* =================================================
-   GLASS BOOST: viac transparentné bloky v body (aby datacenter presvital)
-   (tvoj request – toto je ten kľúčový “feel” fix)
+   GLASS BOOST (reálny): aby datacenter presvital cez body karty
+   KĽÚČ: menší blur + priesvitná výplň
 ================================================= */
 .card{
-  background: rgba(255,255,255,.055) !important; /* bolo .08 */
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(255,255,255,.14) !important;
+  background: var(--glassBg) !important;
+  backdrop-filter: blur(var(--glassBlur)) !important;
+  -webkit-backdrop-filter: blur(var(--glassBlur)) !important;
+  border: 1px solid var(--glassBorder) !important;
   box-shadow:
-    0 12px 32px rgba(2,6,23,.38),
-    inset 0 1px 0 rgba(255,255,255,.04) !important;
+    0 14px 36px rgba(2,6,23,.42),
+    inset 0 1px 0 rgba(255,255,255,.06) !important;
 }
 
-/* menšie bloky (service cards) tiež pustia viac pozadia */
+/* service cards ešte ľahšie */
 .service{
-  background: rgba(255,255,255,.045) !important;
-  border: 1px solid rgba(255,255,255,.12) !important;
+  background: rgba(255,255,255,.028) !important;
+  backdrop-filter: blur(9px) !important;
+  -webkit-backdrop-filter: blur(9px) !important;
+  border: 1px solid rgba(255,255,255,.16) !important;
 }
+
+/* text v kartách – jemne svetlejší pre čitateľnosť pri väčšom presvite */
+.card p, .service p{ color: rgba(238,244,255,.84) !important; }
+.card .list{ color: rgba(238,244,255,.84) !important; }
 
 /* =================================================
    vypni staré infra-bg pseudo (ak ostalo v HTML)
