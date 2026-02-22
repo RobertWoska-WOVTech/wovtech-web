@@ -419,24 +419,46 @@ main#content > *{ position: relative; z-index:2; }
   display:none !important;
 }
 
-/* brand vo footeri: logo vľavo, text vedľa */
+/* brand vo footeri: logo vľavo, text CENTROVANÝ ako celok (bez zmeny HTML) */
 .footer .brand{
-  display:flex !important;
-  flex-direction:row !important;
+  display:grid !important;
+  grid-template-columns: 40px 1fr 40px; /* 40px ~ šírka loga */
   align-items:center !important;
-  justify-content:center !important;
+  justify-items:center !important;
   gap:12px !important;
-  text-align:left !important;
+  text-align:center !important;
   color: rgba(238,244,255,.96) !important;
 }
 
+/* logo ostane vľavo */
+.footer .brand .brand-logo,
+.footer .brand .brand-badge{
+  grid-column: 1 !important;
+  justify-self:start !important;
+  margin:0 !important;
+  filter:none !important;
+}
+
+/* textový blok ide do stredu */
 .footer .brand > span{
+  grid-column: 2 !important;
   display:flex !important;
   flex-direction:column !important;
   gap:2px !important;
+  align-items:center !important;
+  justify-content:center !important;
   color: rgba(238,244,255,.96) !important;
 }
 
+/* „ghost“ tretí stĺpec – vyrobíme ho pseudo-elementom na .brand */
+.footer .brand::after{
+  content:"";
+  grid-column: 3;
+  width:40px;
+  height:40px;
+}
+
+/* subtext */
 .footer .brand .sub{
   color: rgba(238,244,255,.78) !important;
   font-weight:650;
