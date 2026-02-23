@@ -1,15 +1,14 @@
 <!doctype html>
 <html lang="sk">
 <head>
-  
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Články | WOV Tech</title>
-  <meta name="description" content="Články: čo si premyslieť pred návrhom infraštruktúry – monitoring vs logy, zálohy, NTP, incident/change, prístupy a networking." />
+  <meta name="description" content="Praktické články k návrhu a stabilizácii infraštruktúry: monitoring vs. logy, zálohovanie, NTP, incidenty a zmeny, prístupy a sieť." />
   <meta name="robots" content="index,follow,noarchive" />
   <link rel="canonical" href="https://wovtech.sk/clanky.html" />
   <meta property="og:title" content="Články | WOV Tech" />
-  <meta property="og:description" content="Články: čo si premyslieť pred návrhom infraštruktúry – monitoring vs logy, zálohy, NTP, incident/change, prístupy a networking." />
+  <meta property="og:description" content="Praktické články k návrhu a stabilizácii infraštruktúry: monitoring vs. logy, zálohovanie, NTP, incidenty a zmeny, prístupy a sieť." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://wovtech.sk/clanky.html" />
   <meta name="theme-color" content="#0b1220" />
@@ -19,9 +18,7 @@
 <a class="skip-link" href="#content">Preskočiť na obsah</a>
 
 <header class="header">
-  
-
-<div class="container">
+  <div class="container">
     <nav class="nav" aria-label="Hlavná navigácia">
       <a class="brand" href="index.html">
         <img class="brand-logo" src="/wovtech-web/assets/img/logo-mark.png" alt="WOV Tech logo" width="36" height="36" loading="lazy" />
@@ -43,8 +40,14 @@
 <section class="hero">
   <div class="container">
     <div class="card pad-lg">
-      <h1>Články: čo si premyslieť pred kontaktom</h1>
-      <p>Krátke, praktické texty. Cieľ: lepší návrh infra a kvalitnejšie dopyty.</p>
+      <h1>Články a odporúčania</h1>
+      <p>
+        Krátke praktické texty, ktoré pomáhajú pripraviť dopyt a zorientovať sa v rozhodnutiach pri návrhu infraštruktúry.
+        Ak riešite konkrétny problém, napíšte nám – radi poradíme s ďalším krokom.
+      </p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap">
+        <a class="cta secondary" href="kontakt.html">Kontaktovať nás</a>
+      </div>
     </div>
   </div>
 </section>
@@ -52,27 +55,34 @@
 <section class="section">
   <div class="container two-col">
     <div class="card pad">
-      <h2>Pillar články (návrh infra)</h2>
+      <h2>Základné témy k návrhu infraštruktúry</h2>
       <ul class="list">
-        <li><a href="navrh-infrastruktury/co-si-premysliet/monitoring-vs-logy.html">Monitoring vs logy</a></li>
-        <li><a href="navrh-infrastruktury/co-si-premysliet/zalohy-a-obnova.html">Zálohy a obnova</a></li>
-        <li><a href="navrh-infrastruktury/co-si-premysliet/ntp-preco-je-cas-kriticky.html">NTP: prečo je čas kritický</a></li>
-        <li><a href="navrh-infrastruktury/co-si-premysliet/incident-a-change-procesy.html">Incident & Change procesy</a></li>
-        <li><a href="navrh-infrastruktury/co-si-premysliet/pristupy-a-identita.html">Prístupy & identita</a></li>
-        <li><a href="navrh-infrastruktury/co-si-premysliet/networking-v-infra-navrhu.html">Networking v infra návrhu</a></li>
-        <li><a href="navrh-infrastruktury/co-si-premysliet/dokumentacia-a-runbooky.html">Dokumentácia & runbooky</a></li>
+        <li><a href="navrh-infrastruktury/co-si-premysliet/monitoring-vs-logy.html">Monitoring vs. logy</a></li>
+        <li><a href="navrh-infrastruktury/co-si-premysliet/zalohy-a-obnova.html">Zálohovanie a obnova</a></li>
+        <li><a href="navrh-infrastruktury/co-si-premysliet/ntp-preco-je-cas-kriticky.html">NTP: prečo je správny čas kritický</a></li>
+        <li><a href="navrh-infrastruktury/co-si-premysliet/incident-a-change-procesy.html">Incidenty a zmeny (Change)</a></li>
+        <li><a href="navrh-infrastruktury/co-si-premysliet/pristupy-a-identita.html">Prístupy a identita</a></li>
+        <li><a href="navrh-infrastruktury/co-si-premysliet/networking-v-infra-navrhu.html">Sieť v návrhu infraštruktúry</a></li>
+        <li><a href="navrh-infrastruktury/co-si-premysliet/dokumentacia-a-runbooky.html">Dokumentácia a runbooky</a></li>
       </ul>
     </div>
+
     <div class="card pad">
-      <h2>Service články (špecifické)</h2>
+      <h2>Články k vybraným službám</h2>
       <ul class="list">
-        <li><a href="sluzby/ddi-dns-dhcp-ipam/co-si-premysliet.html">DDI: čo si premyslieť</a></li>
+        <li><a href="sluzby/ddi-dns-dhcp-ipam/co-si-premysliet.html">DDI (DNS/DHCP/IPAM): čo si premyslieť</a></li>
         <li><a href="sluzby/ntp/co-si-premysliet.html">NTP: čo si premyslieť</a></li>
-        <li><a href="sluzby/cloud-aws-azure/co-si-premysliet.html">Cloud: čo si premyslieť</a></li>
+        <li><a href="sluzby/cloud-aws-azure/co-si-premysliet.html">Cloud (AWS/Azure/GCP): čo si premyslieť</a></li>
         <li><a href="sluzby/monitoring-infrastruktury/co-si-premysliet.html">Monitoring: čo si premyslieť</a></li>
         <li><a href="sluzby/log-management/co-si-premysliet.html">Log management: čo si premyslieť</a></li>
-        <li><a href="sluzby/zalohy-a-obnova/co-si-premysliet.html">Zálohy: čo si premyslieť</a></li>
+        <li><a href="sluzby/zalohy-a-obnova/co-si-premysliet.html">Zálohovanie: čo si premyslieť</a></li>
       </ul>
+
+      <div class="hr"></div>
+      <p class="notice">
+        Ak máte záujem o rýchle posúdenie situácie, pošlite stručný kontext e-mailom. Odpovieme s odporúčaním ďalšieho postupu.
+      </p>
+      <a class="cta small" href="kontakt.html">Otvoriť kontakt</a>
     </div>
   </div>
 </section>
