@@ -47,11 +47,19 @@
     <div class="card pad-lg">
       <h1>Log management: čo si premyslieť pred návrhom</h1>
       <p>
-        Logy sú užitočné vtedy, keď podporujú <b>incident triage</b>, <b>auditovateľnosť</b> a <b>prevádzkové rozhodnutia</b>.
-        Pred návrhom si ujasnite účely, vlastníctvo a nákladový model (retencia, objemy, indexy).
+        Logy majú hodnotu len vtedy, keď podporujú <b>incident triage</b>, <b>auditovateľnosť</b>
+        a <b>prevádzkové rozhodnutia</b>. Pred návrhom si ujasnite účely, vlastníctvo
+        a nákladový model (retencia, objemy, indexy).
       </p>
 
-      <div style="display:flex; gap:10px; flex-wrap:wrap">
+      <div class="notice" style="margin-top:16px">
+        <b>TL;DR pre management:</b><br/>
+        Logy odpovedajú <b>prečo</b> sa incident stal a <b>kde</b> vznikol.
+        Bez jasných use-cases, normalizácie a retencie sa z logov stáva drahé úložisko bez hodnoty.
+        Minimum štandard je pár kritických zdrojov, spoločné polia, rozumná retencia a jasné vlastníctvo pipeline.
+      </div>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px">
         <a class="cta" href="/wovtech-web/kontakt.html">Kontakt</a>
         <a class="cta secondary" href="/wovtech-web/sluzby/log-management.html">Log management – služba</a>
       </div>
@@ -64,25 +72,26 @@
     <div class="card pad">
       <h2>Kľúčové otázky</h2>
       <ul class="list">
-        <li><b>Use-cases:</b> na čo logy reálne potrebujete (incidenty, audit, forenzná analýza, troubleshooting výkonu)?</li>
-        <li><b>Zdroje:</b> ktoré logy sú kritické (identity/auth, DNS, edge/WAF/LB, systémy, aplikácie, databázy)?</li>
-        <li><b>Dostupnosť:</b> aký je očakávaný čas „od incidentu po odpoveď“ – viete logy rýchlo vyhľadať a korelovať?</li>
-        <li><b>Normalizácia:</b> máte dohodnuté kľúčové polia (napr. user, host, service, request_id, severity, environment)?</li>
-        <li><b>Retencia:</b> aká je retencia pre rôzne triedy logov (operatívna vs auditná) a čo je „must-have“ vs „nice-to-have“?</li>
-        <li><b>Náklady:</b> poznáte objemy (GB/deň), očakávaný rast a cenu za ingest/ukladanie/prehľadávanie?</li>
-        <li><b>Citlivé údaje:</b> ako riešite PII/secret scanning, maskovanie, prístupové práva a audit prístupov k logom?</li>
-        <li><b>Ownership:</b> kto vlastní pipeline (ingest, parsing, indexy) a kto je zodpovedný za zmeny pri nových formátoch?</li>
+        <li><b>Use-cases:</b> na čo logy reálne potrebujete (incidenty, audit, forenzná analýza, výkon)?</li>
+        <li><b>Zdroje:</b> ktoré logy sú kritické (identity/auth, DNS, edge/WAF/LB, systémy, aplikácie, DB)?</li>
+        <li><b>Dostupnosť:</b> viete logy rýchlo vyhľadať a korelovať pri incidente?</li>
+        <li><b>Normalizácia:</b> máte dohodnuté kľúčové polia (user, host, service, request_id, severity)?</li>
+        <li><b>Retencia:</b> operatívna vs auditná – čo držať krátko a čo dlhodobo?</li>
+        <li><b>Náklady:</b> poznáte objemy (GB/deň), rast a cenu za ingest/ukladanie/prehľadávanie?</li>
+        <li><b>Citlivé údaje:</b> ako riešite PII, maskovanie, prístupy a audit prístupov k logom?</li>
+        <li><b>Ownership:</b> kto vlastní ingest, parsing a zmeny pri nových formátoch?</li>
       </ul>
 
       <div class="hr"></div>
 
       <h2>Praktický štart</h2>
       <p>
-        Začnite s malým, ale kvalitným rozsahom: vyberte 3–5 najdôležitejších zdrojov logov,
-        dohodnite spoločné polia a nastavte retenciu podľa účelu. Až potom rozširujte coverage.
+        Začnite s malým, ale kvalitným rozsahom: vyberte 3–5 najdôležitejších zdrojov,
+        dohodnite spoločné polia a nastavte retenciu podľa účelu.
+        Až potom rozširujte coverage.
       </p>
       <p>
-        Monitoring typicky povie, <b>že</b> je problém. Logy pomôžu zistiť <b>prečo</b> a <b>kde</b>.
+        Monitoring povie, <b>že</b> je problém. Logy povedia <b>prečo</b> a <b>kde</b>.
         Najlepšie fungujú spolu – s jasným incident procesom a runbookmi.
       </p>
 
