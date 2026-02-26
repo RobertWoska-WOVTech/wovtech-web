@@ -282,17 +282,7 @@ main#content > *{ position: relative; z-index:2; }
 .hr{height:1px; background: rgba(255,255,255,.14); margin: 14px 0}
 
 .notice {
-  background: rgba(255,255,255,0.6); /* ak je tmavý layout */
-  color: #111827;
-  border-left: 4px solid #3b82f6;
-  padding: 14px 16px;
-  border-radius: 6px;
-  line-height: 1.6;
-}
-
-.notice b {
-  color: #0f172a;
-  font-weight: 600;
+  color: #111827; /* tmavá sivá / takmer čierna */
 }
 
 .code{
