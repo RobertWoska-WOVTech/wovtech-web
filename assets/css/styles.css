@@ -282,13 +282,13 @@ main#content > *{ position: relative; z-index:2; }
 .hr{height:1px; background: rgba(255,255,255,.14); margin: 14px 0}
 
 .notice {
-  background: rgba(255, 255, 255, 0.04); /* o niečo tmavšie než pozadie */
-  border-left: 4px solid #3b82f6;        /* brand / accent */
-  color: #e5e7eb;                        /* svetlejší text */
-  padding: 14px 16px;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  background: linear-gradient(
+    to right,
+    rgba(59,130,246,0.12),
+    rgba(255,255,255,0.02)
+  );
+  border-left: 4px solid #3b82f6;
+  color: #f1f5f9;
 }
 
 .code{
