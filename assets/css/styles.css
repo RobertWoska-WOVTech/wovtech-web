@@ -73,6 +73,7 @@ small{color:var(--muted)}
   color: var(--text);
 }
 .brand span{display:block}
+.header .brand > span{transform: translateY(-2px);}
 .brand .sub{font-weight:650; color: var(--muted); font-size:12px; margin-top:-2px}
 
 .brand-logo{
@@ -404,7 +405,7 @@ main#content > *{ position: relative; z-index:2; }
 .footer .brand{
   display:flex !important;
   flex-direction:row !important;
-  align-items:flex-start !important;    /* logo hore, text blok si rieši center */
+  align-items:flex-start !important;
   justify-content:center !important;
   gap:10px !important;
   width: fit-content !important;
@@ -433,10 +434,11 @@ main#content > *{ position: relative; z-index:2; }
 .footer .brand > span{
   display:flex !important;
   flex-direction:column !important;
-  align-items:center !important;   /* toto je kľúč */
-  text-align:center !important;    /* toto je kľúč */
+  align-items:center !important;
+  text-align:center !important;
   gap:2px !important;
   color: rgba(238,244,255,.96) !important;
+  transform: translateY(-2px);
 }
 
 /* sub */
