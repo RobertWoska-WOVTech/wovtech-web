@@ -244,7 +244,7 @@ main#content > *{ position: relative; z-index:2; }
 .service{
   padding: 16px;
   border-radius: var(--radius);
-  background: rgba(255,255,255,.022) !important;
+  background: rgba(10,16,30,.34) !important;
   border: 1px solid rgba(255,255,255,.14) !important;
   box-shadow: 0 12px 28px rgba(2,6,23,.38);
 }
