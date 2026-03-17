@@ -698,7 +698,10 @@ main#content a.cta.small::after{
   .header .brand{
     display:flex;
     align-items:center;
+    justify-content:center;
     gap:10px;
+    text-align:center;
+    width:100%;
   }
 
   .brand-logo{
@@ -727,7 +730,7 @@ main#content a.cta.small::after{
   .menu{
     display:flex;
     flex-wrap:wrap;
-    justify-content:flex-start;
+    justify-content:center;
     gap:8px;
   }
 
