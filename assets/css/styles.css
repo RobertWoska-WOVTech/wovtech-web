@@ -408,21 +408,42 @@ main#content a.cta.small{
   background:none !important;
   box-shadow:none !important;
   border-radius:0 !important;
-  color:#9ec5ff !important;
   font-weight:850;
 }
 
-main#content a.cta:hover,
-main#content a.cta.small:hover{
+/* tmavšie linky na svetlom hero pozadí */
+.hero a.cta,
+.hero a.cta.small{
+  color:#1d4ed8 !important;
+}
+
+.hero a.cta:hover,
+.hero a.cta.small:hover{
+  color:#1e40af !important;
+  background:none !important;
+  border:none !important;
+  box-shadow:none !important;
+}
+
+/* svetlejšie linky na tmavom body pozadí */
+.section a.cta,
+.section a.cta.small{
+  color:#9ec5ff !important;
+}
+
+.section a.cta:hover,
+.section a.cta.small:hover{
   color:#c7ddff !important;
   background:none !important;
   border:none !important;
   box-shadow:none !important;
 }
 
+/* šípka s reálnym odsadením */
 main#content a.cta::after,
 main#content a.cta.small::after{
-  content:" →";
+  content:"→";
+  margin-left:6px;
 }
 
 /* =================================================
