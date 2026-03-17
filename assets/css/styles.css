@@ -193,8 +193,22 @@ main#content::before{
   background: url("../img/hero-datacenter.png") center/cover no-repeat;
   background-position: center 20% !important;
   filter: contrast(1.85) saturate(1.65) brightness(1.06);
-  opacity: .98;
-  z-index:0;
+  opacity: .98;z-index:0;
+  pointer-events:none;
+}
+
+main#content::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,
+      rgba(79,140,255,.18),
+      rgba(79,140,255,.08) 40%,
+      rgba(13,21,38,.28)
+    ),
+    radial-gradient(1200px 560px at 45% 20%, rgba(79,140,255,.25), transparent 62%);
+  z-index:1;
   pointer-events:none;
 }
 
