@@ -573,13 +573,17 @@ main#content a.cta.small::after{
     transform:none;
   }
 
-  .header .brand .sub{
-    display:none;
-  }
-
   .header .brand{
     font-size:16px;
-    line-height:1.15;
+    line-height:1.1;
+  }
+
+  .header .brand .sub{
+    display:block;
+    margin-top:4px;
+    font-size:11px;
+    line-height:1.2;
+    color: rgba(15,23,42,.72) !important;
   }
 
   .menu{
