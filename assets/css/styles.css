@@ -294,7 +294,7 @@ main#content > *{ position: relative; z-index:2; }
 .hr{height:1px; background: rgba(255,255,255,.14); margin: 14px 0}
 
 .notice {
-  color: #111827; /* tmavá sivá / takmer čierna */
+  color: #111827;
 }
 
 .code{
@@ -394,19 +394,47 @@ main#content > *{ position: relative; z-index:2; }
   background: var(--heroCard) !important;
 }
 
+/* =========================
+   BODY CTA AS TEXT LINKS
+========================= */
+main#content a.cta,
+main#content a.cta.small{
+  display:inline-flex !important;
+  align-items:center;
+  justify-content:flex-start;
+  gap:0;
+  padding:0 !important;
+  border:none !important;
+  background:none !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
+  color:#9ec5ff !important;
+  font-weight:850;
+}
+
+main#content a.cta:hover,
+main#content a.cta.small:hover{
+  color:#c7ddff !important;
+  background:none !important;
+  border:none !important;
+  box-shadow:none !important;
+}
+
+main#content a.cta::after,
+main#content a.cta.small::after{
+  content:" →";
+}
+
 /* =================================================
    FOOTER – logo pri texte, ale názov centrovaný nad scope
 ================================================= */
 .footer{
   padding: 26px 0 40px;
   margin-top: 22px;
-
   background: rgba(11,18,32,.55);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-
   border-top: 1px solid rgba(255,255,255,.12);
-
   color: rgba(238,244,255,.92);
 }
 
@@ -443,7 +471,7 @@ main#content > *{ position: relative; z-index:2; }
 .footer .brand-logo,
 .footer .brand-badge{
   position: relative;
-  top: 4px; /* ak treba, skús 3px */
+  top: 4px;
 }
 
 /* text blok: centrovať názov aj sub nad sebou */
