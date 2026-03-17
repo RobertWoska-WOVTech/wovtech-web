@@ -4,16 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>NTP – prečo je čas kritický | WOV Tech</title>
-  <meta name="description" content="Prečo je NTP kritické pre bezpečnosť, auditovateľnosť a troubleshooting. Otázky a minimum štandard pre návrh časovej infraštruktúry." />
+  <title>Networking v infra návrhu | WOV Tech</title>
+  <meta name="description" content="Networking v infra návrhu: segmentácia, hranice dôvery, routing, prístupy a minimálny štandard prevádzkovateľnosti." />
 
   <meta name="robots" content="index,follow,noarchive" />
-  <link rel="canonical" href="https://wovtech.sk/navrh-infrastruktury/co-si-premysliet/ntp-preco-je-cas-kriticky.html" />
+  <link rel="canonical" href="https://wovtech.sk/navrh-infrastruktury/networking-v-infra-navrhu.html" />
 
-  <meta property="og:title" content="NTP – prečo je čas kritický | WOV Tech" />
-  <meta property="og:description" content="Prečo je NTP kritické pre bezpečnosť, auditovateľnosť a troubleshooting. Otázky a minimum štandard pre návrh časovej infraštruktúry." />
+  <meta property="og:title" content="Networking v infra návrhu | WOV Tech" />
+  <meta property="og:description" content="Networking v infra návrhu: segmentácia, hranice dôvery, routing, prístupy a minimálny štandard prevádzkovateľnosti." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://wovtech.sk/navrh-infrastruktury/co-si-premysliet/ntp-preco-je-cas-kriticky.html" />
+  <meta property="og:url" content="https://wovtech.sk/navrh-infrastruktury/networking-v-infra-navrhu.html" />
 
   <meta name="theme-color" content="#0b1220" />
   <link rel="stylesheet" href="/wovtech-web/assets/css/styles.css" />
@@ -44,18 +44,19 @@
 <section class="hero">
   <div class="container">
     <div class="card pad-lg">
-      <h1>NTP: prečo je čas v infraštruktúre kritický</h1>
+      <h1>Networking v infra návrhu: čo musí byť jasné</h1>
       <p>
-        Časová synchronizácia je <b>tier-0</b> schopnosť: priamo ovplyvňuje bezpečnosť, auditovateľnosť
-        a schopnosť rýchlo riešiť incidenty. Ak je čas nekonzistentný, zlyháva korelácia udalostí,
-        autentifikácia aj overovanie certifikátov.
+        Networking nie je „samostatná téma“ iba pre sieťarov. Je to spoločná vrstva, od ktorej závisí dostupnosť,
+        bezpečnosť a schopnosť riešiť incidenty. V návrhu infra je dôležité mať jasné hranice, vlastníctvo a pravidlá.
       </p>
 
       <div class="notice" style="margin-top:16px">
-        Nesprávny čas rozbije autentifikáciu, certifikáty a koreláciu logov – incidenty sa potom riešia naslepo.
-        Časová infra musí byť redundantná, monitorovaná (drift) a kontrolovaná procesom zmien.
+        Stabilita infra často padá na nejasných sieťových hraniciach a vlastníctve.
+        Segmentácia, firewall pravidlá, prístupový model a routing (on-prem ↔ cloud) musia byť pomenované a dokumentované –
+        inak rastie riziko aj čas incidentov.
       </div>
 
+      </div>
     </div>
   </div>
 </section>
@@ -66,35 +67,35 @@
 
       <h2>Otázky, ktoré si treba zodpovedať</h2>
       <ul class="list">
-        <li>Aký je primárny zdroj času (stratum) a aká je záloha pri výpadku?</li>
-        <li>Ktoré systémy sú citlivé na čas (SSO/auth, certifikáty, logy, DB, distrib. systémy)?</li>
-        <li>Ako monitorujeme synchronizáciu (offset/drift), nie iba dostupnosť NTP servera?</li>
-        <li>Ako vyzerá NTP v hybride (on-prem + cloud) a kde sú hranice dôvery?</li>
-        <li>Máme zdokumentovaný postup pri NTP incidente (triage + mitigácia)?</li>
+        <li>Aká je segmentácia (prod/non-prod, management/data plane) a aké sú hranice dôvery?</li>
+        <li>Kde sú firewall hranice, kto ich spravuje a aký je proces zmien?</li>
+        <li>Ako je riešený prístup (VPN/bastion/SSO, princípy least privilege, časovo obmedzené prístupy)?</li>
+        <li>Ako vyzerá routing medzi on-prem a cloudom (latencia, failover, DNS, zodpovednosti)?</li>
+        <li>Máme schopnosť rýchlo debugovať sieť (flow logs, tcpdump, metriky, trace, štandardný postup triage)?</li>
       </ul>
 
       <div class="hr"></div>
 
-      <h2>Typické dopady nesprávneho času</h2>
+      <h2>Typické riziká a dopady</h2>
       <ul class="list">
-        <li><b>Incident triage trvá dlhšie:</b> logy nesedia a korelácia udalostí je nepresná.</li>
-        <li><b>Bezpečnostné zlyhania:</b> problémy s tokenmi, Kerberos/LDAP, platnosťou certifikátov.</li>
-        <li><b>Audit a forenzná analýza:</b> časové osi sú nehodnoverné, ťažšie sa dokazuje priebeh udalostí.</li>
-        <li><b>Reťazové chyby:</b> zlyhajú závislosti, ktoré na prvý pohľad „s časom nesúvisia“.</li>
+        <li><b>Incidenty trvajú dlhšie:</b> bez jasných hraníc a tooling-u sa z triage stane hádanie.</li>
+        <li><b>Bezpečnostné riziko:</b> „dočasné“ pravidlá a výnimky zostanú natrvalo.</li>
+        <li><b>Nejasné vlastníctvo:</b> routing/firewall/DNS sa presúva medzi tímami a problém sa nerieši systematicky.</li>
+        <li><b>Cloud slabiny:</b> security groups/NACL/routing/load balancers bez štandardov vedú k driftu a výpadkom.</li>
       </ul>
 
       <p class="notice">
-        <b>Minimum štandard:</b> min. 2 nezávislé zdroje času, jasná topológia (on-prem/cloud),
-        monitoring offsetu/driftu, kontrola zmien konfigurácie a postup pri incidente.
+        <b>Minimum štandard:</b> definovaná segmentácia a hranice dôvery, dokumentované vlastníctvo,
+        proces zmien (schválenie + rollback), základné observability (flow/metrics/logs) a postup triage.
       </p>
 
       <div class="hr"></div>
 
       <p><b>Súvisiace:</b></p>
       <ul class="list">
-        <li><a href="/wovtech-web/sluzby/monitoring-infrastruktury.html">Monitoring infraštruktúry</a></li>
-        <li><a href="/wovtech-web/checklisty/ntp.html">NTP: čo si premyslieť</a></li>
-        <li><a href="/wovtech-web/navrh-infrastruktury/co-si-premysliet/monitoring-vs-logy.html">Monitoring vs logy</a></li>
+        <li><a href="/wovtech-web/sluzby/ddi-dns-dhcp-ipam.html">DDI (DNS/DHCP/IPAM)</a></li>
+        <li><a href="/wovtech-web/sluzby/cloud-aws-azure.html">Cloud ops</a></li>
+        <li><a href="/wovtech-web/navrh-infrastruktury/pristupy-a-identita.html">Prístupy &amp; identita</a></li>
       </ul>
 
     </div>

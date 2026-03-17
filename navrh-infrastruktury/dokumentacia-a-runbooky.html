@@ -4,16 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Networking v infra návrhu | WOV Tech</title>
-  <meta name="description" content="Networking v infra návrhu: segmentácia, hranice dôvery, routing, prístupy a minimálny štandard prevádzkovateľnosti." />
+  <title>Dokumentácia &amp; runbooky | WOV Tech</title>
+  <meta name="description" content="Dokumentácia a runbooky pre infra: zdroj pravdy, postupy pri incidente a zmene, onboarding a minimum štandard pre prevádzkovateľnosť." />
 
   <meta name="robots" content="index,follow,noarchive" />
-  <link rel="canonical" href="https://wovtech.sk/navrh-infrastruktury/co-si-premysliet/networking-v-infra-navrhu.html" />
+  <link rel="canonical" href="https://wovtech.sk/navrh-infrastruktury/dokumentacia-a-runbooky.html" />
 
-  <meta property="og:title" content="Networking v infra návrhu | WOV Tech" />
-  <meta property="og:description" content="Networking v infra návrhu: segmentácia, hranice dôvery, routing, prístupy a minimálny štandard prevádzkovateľnosti." />
+  <meta property="og:title" content="Dokumentácia &amp; runbooky | WOV Tech" />
+  <meta property="og:description" content="Dokumentácia a runbooky pre infra: zdroj pravdy, postupy pri incidente a zmene, onboarding a minimum štandard pre prevádzkovateľnosť." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://wovtech.sk/navrh-infrastruktury/co-si-premysliet/networking-v-infra-navrhu.html" />
+  <meta property="og:url" content="https://wovtech.sk/navrh-infrastruktury/dokumentacia-a-runbooky.html" />
 
   <meta name="theme-color" content="#0b1220" />
   <link rel="stylesheet" href="/wovtech-web/assets/css/styles.css" />
@@ -44,19 +44,19 @@
 <section class="hero">
   <div class="container">
     <div class="card pad-lg">
-      <h1>Networking v infra návrhu: čo musí byť jasné</h1>
+      <h1>Dokumentácia &amp; runbooky: minimum pre prevádzkovateľnú infra</h1>
       <p>
-        Networking nie je „samostatná téma“ iba pre sieťarov. Je to spoločná vrstva, od ktorej závisí dostupnosť,
-        bezpečnosť a schopnosť riešiť incidenty. V návrhu infra je dôležité mať jasné hranice, vlastníctvo a pravidlá.
+        Dokumentácia a runbooky nie sú „papierovanie“. Sú to artefakty, ktoré umožňujú stabilnú prevádzku,
+        auditovateľné zmeny a znižujú závislosť od jednotlivcov. Ak je knowledge iba „v hlave“,
+        riziko incidentu aj čas obnovy rastú.
       </p>
 
       <div class="notice" style="margin-top:16px">
-        Stabilita infra často padá na nejasných sieťových hraniciach a vlastníctve.
-        Segmentácia, firewall pravidlá, prístupový model a routing (on-prem ↔ cloud) musia byť pomenované a dokumentované –
-        inak rastie riziko aj čas incidentov.
+        Dokumentácia a runbooky znižujú riziko „bus factor“ a skracujú incidenty.
+        Cieľ nie je byrokracia – cieľ je rýchla orientácia, jasné rozhodnutia a opakovateľné postupy
+        (triage → akcia → rollback → eskalácia).
       </div>
 
-      </div>
     </div>
   </div>
 </section>
@@ -67,35 +67,42 @@
 
       <h2>Otázky, ktoré si treba zodpovedať</h2>
       <ul class="list">
-        <li>Aká je segmentácia (prod/non-prod, management/data plane) a aké sú hranice dôvery?</li>
-        <li>Kde sú firewall hranice, kto ich spravuje a aký je proces zmien?</li>
-        <li>Ako je riešený prístup (VPN/bastion/SSO, princípy least privilege, časovo obmedzené prístupy)?</li>
-        <li>Ako vyzerá routing medzi on-prem a cloudom (latencia, failover, DNS, zodpovednosti)?</li>
-        <li>Máme schopnosť rýchlo debugovať sieť (flow logs, tcpdump, metriky, trace, štandardný postup triage)?</li>
+        <li>Kde je „zdroj pravdy“ (repo/wiki/CMDB) a kto je zaň zodpovedný?</li>
+        <li>Máme runbooky pre incidenty, zmeny a obnovu (RTO/RPO scenáre)?</li>
+        <li>Je onboarding nového človeka možný bez dlhého shadowingu (a bez rizika)?</li>
+        <li>Sú konfigurácie a postupy verziované (history, review, rollback)?</li>
+        <li>Je dokumentácia udržiavaná a používaná, alebo formálne existuje a nikto jej neverí?</li>
       </ul>
 
       <div class="hr"></div>
 
-      <h2>Typické riziká a dopady</h2>
+      <h2>Typické dopady, keď dokumentácia chýba</h2>
       <ul class="list">
-        <li><b>Incidenty trvajú dlhšie:</b> bez jasných hraníc a tooling-u sa z triage stane hádanie.</li>
-        <li><b>Bezpečnostné riziko:</b> „dočasné“ pravidlá a výnimky zostanú natrvalo.</li>
-        <li><b>Nejasné vlastníctvo:</b> routing/firewall/DNS sa presúva medzi tímami a problém sa nerieši systematicky.</li>
-        <li><b>Cloud slabiny:</b> security groups/NACL/routing/load balancers bez štandardov vedú k driftu a výpadkom.</li>
+        <li><b>Incident trvá dlhšie:</b> triage je pomalý, chýbajú overené kroky a eskalácia.</li>
+        <li><b>Rizikové zmeny:</b> zmeny sa robia „od oka“, bez dohľadateľnosti a bez rollbacku.</li>
+        <li><b>Single point of knowledge:</b> infra je závislá na 1–2 ľuďoch (dovolenka = riziko).</li>
+        <li><b>Neauditovateľnosť:</b> ťažko sa preukazuje „kto a prečo“ (compliance, bezpečnosť).</li>
       </ul>
 
       <p class="notice">
-        <b>Minimum štandard:</b> definovaná segmentácia a hranice dôvery, dokumentované vlastníctvo,
-        proces zmien (schválenie + rollback), základné observability (flow/metrics/logs) a postup triage.
+        <b>Minimum štandard:</b> 1) krátky HLD/LLD kontext (čo a prečo), 2) runbooky pre top incident scenáre,
+        3) change postup + rollback, 4) ownership a review, 5) verzovanie v repozitári (alebo aspoň história).
+      </p>
+
+      <div class="hr"></div>
+
+      <p>
+        Runbook má byť krátky a použiteľný: <b>symptóm → kontrola → akcia → rollback → eskalácia</b>.
+        Cieľom nie je napísať román, ale umožniť konzistentnú reakciu aj mimo „core“ tímu.
       </p>
 
       <div class="hr"></div>
 
       <p><b>Súvisiace:</b></p>
       <ul class="list">
-        <li><a href="/wovtech-web/sluzby/ddi-dns-dhcp-ipam.html">DDI (DNS/DHCP/IPAM)</a></li>
-        <li><a href="/wovtech-web/sluzby/cloud-aws-azure.html">Cloud ops</a></li>
-        <li><a href="/wovtech-web/navrh-infrastruktury/co-si-premysliet/pristupy-a-identita.html">Prístupy &amp; identita</a></li>
+        <li><a href="/wovtech-web/navrh-infrastruktury/incident-a-change-procesy.html">Incident &amp; Change procesy</a></li>
+        <li><a href="/wovtech-web/navrh-infrastruktury/zalohy-a-obnova.html">Zálohy a obnova</a></li>
+        <li><a href="/wovtech-web/navrh-infrastruktury/pristupy-a-identita.html">Prístupy &amp; identita</a></li>
       </ul>
 
     </div>

@@ -4,16 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Dokumentácia &amp; runbooky | WOV Tech</title>
-  <meta name="description" content="Dokumentácia a runbooky pre infra: zdroj pravdy, postupy pri incidente a zmene, onboarding a minimum štandard pre prevádzkovateľnosť." />
+  <title>NTP – prečo je čas kritický | WOV Tech</title>
+  <meta name="description" content="Prečo je NTP kritické pre bezpečnosť, auditovateľnosť a troubleshooting. Otázky a minimum štandard pre návrh časovej infraštruktúry." />
 
   <meta name="robots" content="index,follow,noarchive" />
-  <link rel="canonical" href="https://wovtech.sk/navrh-infrastruktury/co-si-premysliet/dokumentacia-a-runbooky.html" />
+  <link rel="canonical" href="https://wovtech.sk/navrh-infrastruktury/ntp-preco-je-cas-kriticky.html" />
 
-  <meta property="og:title" content="Dokumentácia &amp; runbooky | WOV Tech" />
-  <meta property="og:description" content="Dokumentácia a runbooky pre infra: zdroj pravdy, postupy pri incidente a zmene, onboarding a minimum štandard pre prevádzkovateľnosť." />
+  <meta property="og:title" content="NTP – prečo je čas kritický | WOV Tech" />
+  <meta property="og:description" content="Prečo je NTP kritické pre bezpečnosť, auditovateľnosť a troubleshooting. Otázky a minimum štandard pre návrh časovej infraštruktúry." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://wovtech.sk/navrh-infrastruktury/co-si-premysliet/dokumentacia-a-runbooky.html" />
+  <meta property="og:url" content="https://wovtech.sk/navrh-infrastruktury/ntp-preco-je-cas-kriticky.html" />
 
   <meta name="theme-color" content="#0b1220" />
   <link rel="stylesheet" href="/wovtech-web/assets/css/styles.css" />
@@ -44,17 +44,16 @@
 <section class="hero">
   <div class="container">
     <div class="card pad-lg">
-      <h1>Dokumentácia &amp; runbooky: minimum pre prevádzkovateľnú infra</h1>
+      <h1>NTP: prečo je čas v infraštruktúre kritický</h1>
       <p>
-        Dokumentácia a runbooky nie sú „papierovanie“. Sú to artefakty, ktoré umožňujú stabilnú prevádzku,
-        auditovateľné zmeny a znižujú závislosť od jednotlivcov. Ak je knowledge iba „v hlave“,
-        riziko incidentu aj čas obnovy rastú.
+        Časová synchronizácia je <b>tier-0</b> schopnosť: priamo ovplyvňuje bezpečnosť, auditovateľnosť
+        a schopnosť rýchlo riešiť incidenty. Ak je čas nekonzistentný, zlyháva korelácia udalostí,
+        autentifikácia aj overovanie certifikátov.
       </p>
 
       <div class="notice" style="margin-top:16px">
-        Dokumentácia a runbooky znižujú riziko „bus factor“ a skracujú incidenty.
-        Cieľ nie je byrokracia – cieľ je rýchla orientácia, jasné rozhodnutia a opakovateľné postupy
-        (triage → akcia → rollback → eskalácia).
+        Nesprávny čas rozbije autentifikáciu, certifikáty a koreláciu logov – incidenty sa potom riešia naslepo.
+        Časová infra musí byť redundantná, monitorovaná (drift) a kontrolovaná procesom zmien.
       </div>
 
     </div>
@@ -67,42 +66,35 @@
 
       <h2>Otázky, ktoré si treba zodpovedať</h2>
       <ul class="list">
-        <li>Kde je „zdroj pravdy“ (repo/wiki/CMDB) a kto je zaň zodpovedný?</li>
-        <li>Máme runbooky pre incidenty, zmeny a obnovu (RTO/RPO scenáre)?</li>
-        <li>Je onboarding nového človeka možný bez dlhého shadowingu (a bez rizika)?</li>
-        <li>Sú konfigurácie a postupy verziované (history, review, rollback)?</li>
-        <li>Je dokumentácia udržiavaná a používaná, alebo formálne existuje a nikto jej neverí?</li>
+        <li>Aký je primárny zdroj času (stratum) a aká je záloha pri výpadku?</li>
+        <li>Ktoré systémy sú citlivé na čas (SSO/auth, certifikáty, logy, DB, distrib. systémy)?</li>
+        <li>Ako monitorujeme synchronizáciu (offset/drift), nie iba dostupnosť NTP servera?</li>
+        <li>Ako vyzerá NTP v hybride (on-prem + cloud) a kde sú hranice dôvery?</li>
+        <li>Máme zdokumentovaný postup pri NTP incidente (triage + mitigácia)?</li>
       </ul>
 
       <div class="hr"></div>
 
-      <h2>Typické dopady, keď dokumentácia chýba</h2>
+      <h2>Typické dopady nesprávneho času</h2>
       <ul class="list">
-        <li><b>Incident trvá dlhšie:</b> triage je pomalý, chýbajú overené kroky a eskalácia.</li>
-        <li><b>Rizikové zmeny:</b> zmeny sa robia „od oka“, bez dohľadateľnosti a bez rollbacku.</li>
-        <li><b>Single point of knowledge:</b> infra je závislá na 1–2 ľuďoch (dovolenka = riziko).</li>
-        <li><b>Neauditovateľnosť:</b> ťažko sa preukazuje „kto a prečo“ (compliance, bezpečnosť).</li>
+        <li><b>Incident triage trvá dlhšie:</b> logy nesedia a korelácia udalostí je nepresná.</li>
+        <li><b>Bezpečnostné zlyhania:</b> problémy s tokenmi, Kerberos/LDAP, platnosťou certifikátov.</li>
+        <li><b>Audit a forenzná analýza:</b> časové osi sú nehodnoverné, ťažšie sa dokazuje priebeh udalostí.</li>
+        <li><b>Reťazové chyby:</b> zlyhajú závislosti, ktoré na prvý pohľad „s časom nesúvisia“.</li>
       </ul>
 
       <p class="notice">
-        <b>Minimum štandard:</b> 1) krátky HLD/LLD kontext (čo a prečo), 2) runbooky pre top incident scenáre,
-        3) change postup + rollback, 4) ownership a review, 5) verzovanie v repozitári (alebo aspoň história).
-      </p>
-
-      <div class="hr"></div>
-
-      <p>
-        Runbook má byť krátky a použiteľný: <b>symptóm → kontrola → akcia → rollback → eskalácia</b>.
-        Cieľom nie je napísať román, ale umožniť konzistentnú reakciu aj mimo „core“ tímu.
+        <b>Minimum štandard:</b> min. 2 nezávislé zdroje času, jasná topológia (on-prem/cloud),
+        monitoring offsetu/driftu, kontrola zmien konfigurácie a postup pri incidente.
       </p>
 
       <div class="hr"></div>
 
       <p><b>Súvisiace:</b></p>
       <ul class="list">
-        <li><a href="/wovtech-web/navrh-infrastruktury/co-si-premysliet/incident-a-change-procesy.html">Incident &amp; Change procesy</a></li>
-        <li><a href="/wovtech-web/navrh-infrastruktury/co-si-premysliet/zalohy-a-obnova.html">Zálohy a obnova</a></li>
-        <li><a href="/wovtech-web/navrh-infrastruktury/co-si-premysliet/pristupy-a-identita.html">Prístupy &amp; identita</a></li>
+        <li><a href="/wovtech-web/sluzby/monitoring-infrastruktury.html">Monitoring infraštruktúry</a></li>
+        <li><a href="/wovtech-web/checklisty/ntp.html">NTP: čo si premyslieť</a></li>
+        <li><a href="/wovtech-web/navrh-infrastruktury/monitoring-vs-logy.html">Monitoring vs logy</a></li>
       </ul>
 
     </div>
