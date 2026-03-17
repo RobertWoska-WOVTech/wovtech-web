@@ -42,6 +42,13 @@
       </nav>
     </div>
   </header>
+<div id="mobileMenu" class="mobile-menu">
+  <a href="/navrh-infrastruktury.html">Návrh infra</a>
+  <a href="/sluzby.html">Služby</a>
+  <a href="/clanky.html">Články</a>
+  <a class="cta" href="/kontakt.html">Kontakt</a>
+</div>
+<div id="mobileOverlay" class="mobile-overlay" onclick="toggleMenu()"></div>
 
   <main id="content">
 
@@ -216,5 +223,11 @@
     "description":"Pomáhame malým a stredným firmám získať prehľadnú, stabilnú a bezpečnú IT infraštruktúru. Cloud, monitoring, zálohovanie, návrh a stabilizácia IT prostredia."
   }
   </script>
+<script>
+function toggleMenu(){
+  document.getElementById("mobileMenu").classList.toggle("open");
+  document.getElementById("mobileOverlay").classList.toggle("open");
+}
+</script>
 </body>
 </html>

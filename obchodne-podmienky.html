@@ -35,6 +35,13 @@
     </nav>
   </div>
 </header>
+<div id="mobileMenu" class="mobile-menu">
+  <a href="/navrh-infrastruktury.html">Návrh infra</a>
+  <a href="/sluzby.html">Služby</a>
+  <a href="/clanky.html">Články</a>
+  <a class="cta" href="/kontakt.html">Kontakt</a>
+</div>
+<div id="mobileOverlay" class="mobile-overlay" onclick="toggleMenu()"></div>
 
 <main id="content">
 
@@ -123,6 +130,12 @@
 
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "Organization", "name": "WOV Tech s. r. o.", "url": "https://wovtech.sk", "email": "kontakt@wovtech.sk", "areaServed": ["SK"], "description": "Návrh a stabilizácia IT infraštruktúry: DDI (DNS/DHCP/IPAM), NTP, cloud (AWS/Azure/GCP), monitoring infra, log management a zálohovanie."}
+</script>
+<script>
+function toggleMenu(){
+  document.getElementById("mobileMenu").classList.toggle("open");
+  document.getElementById("mobileOverlay").classList.toggle("open");
+}
 </script>
 </body>
 </html>
