@@ -681,7 +681,7 @@ main#content a.cta.small::after{
 }
 
 /* =========================
-   MOBILE HEADER – PORTRAIT
+   MOBILE HEADER + FOOTER – PORTRAIT ONLY
 ========================= */
 @media (max-width: 700px) and (orientation: portrait){
   .container{
@@ -696,22 +696,29 @@ main#content a.cta.small::after{
   }
 
   .header .brand{
-    display:flex;
+    display:grid;
+    grid-template-columns: 28px auto 28px;
     align-items:center;
-    justify-content:center;
-    gap:10px;
-    text-align:center;
     width:100%;
+    gap:10px;
   }
 
-  .brand-logo{
+  .header .brand-logo{
+    grid-column:1;
     width:28px;
     height:28px;
     border-radius:8px;
+    justify-self:end;
   }
 
   .header .brand > span{
+    grid-column:2;
     transform:none;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
   }
 
   .header .brand{
@@ -741,5 +748,37 @@ main#content a.cta.small::after{
 
   .header .cta{
     padding:8px 10px !important;
+  }
+
+  .footer .brand{
+    display:grid !important;
+    grid-template-columns: 36px auto 36px !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:10px !important;
+    width:100% !important;
+    max-width:420px;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+
+  .footer .brand-logo,
+  .footer .brand-badge{
+    grid-column:1;
+    width:36px;
+    height:36px;
+    top:0 !important;
+    justify-self:end;
+  }
+
+  .footer .brand > span{
+    grid-column:2;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:center !important;
+    gap:2px !important;
+    transform:none !important;
   }
 }
