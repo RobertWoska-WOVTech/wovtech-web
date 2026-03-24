@@ -395,6 +395,38 @@ main#content > *{
 
 .list li{margin: 8px 0}
 
+/* =========================
+   LIST LINKS – články / checklisty
+========================= */
+.list a{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(158,197,255,.35);
+  text-underline-offset: 3px;
+  transition: color .15s ease, text-decoration-color .15s ease, transform .15s ease;
+}
+
+.list a::after{
+  content: "→";
+  display: inline-block;
+  opacity: .72;
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+.list a:hover{
+  color: #9ec5ff;
+  text-decoration-color: rgba(158,197,255,.8);
+}
+
+.list a:hover::after{
+  transform: translateX(3px);
+  opacity: 1;
+}
+
 .hr{
   height:1px;
   background: rgba(255,255,255,.14);
