@@ -482,6 +482,39 @@ main#content > *{
   color: #0f172a !important;
 }
 
+/* AKTÍVNA POLOŽKA V MENU */
+.header .menu a[aria-current="page"]{
+  color: #0f172a !important;
+  font-weight: 800;
+  border-color: rgba(37, 99, 235, .22);
+  background: rgba(37, 99, 235, .10);
+  position: relative;
+}
+
+.header .menu a[aria-current="page"]:hover{
+  color: #0f172a !important;
+  border-color: rgba(37, 99, 235, .30);
+  background: rgba(37, 99, 235, .14);
+}
+
+/* jemná spodná linka */
+.header .menu a[aria-current="page"]::after{
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 2px;
+  background: rgba(37, 99, 235, .75);
+}
+
+/* ikonka domov – aktívny stav */
+.header .menu .home-link[aria-current="page"]{
+  background: rgba(37, 99, 235, .10);
+  border-color: rgba(37, 99, 235, .22);
+}
+
 /* HOME LINK */
 .home-link{
   justify-content: center;
