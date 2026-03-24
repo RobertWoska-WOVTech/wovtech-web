@@ -482,6 +482,29 @@ main#content > *{
   color: #0f172a !important;
 }
 
+/* HOME LINK */
+.home-link{
+  justify-content: center;
+  line-height: 1;
+  padding: 8px 10px;
+}
+
+.home-link svg{
+  display: block;
+}
+
+.sr-only{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .header .cta{
   border: 1px solid rgba(37, 99, 235, .32) !important;
   background: rgba(37, 99, 235, .12) !important;
