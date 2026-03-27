@@ -32,6 +32,31 @@
   transition: all 0.2s ease;
 }
 
+/* Custom select styling */
+.form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 28px;
+  background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="rgb(238, 244, 255)" stroke-width="2"%3E%3Cpolyline points="6 9 12 15 18 9"%3E%3C/polyline%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 18px;
+  padding-right: 28px;
+}
+
+/* Style select options */
+.form-group select option {
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 8px 12px;
+}
+
+.form-group select option:checked {
+  background: var(--accent);
+  color: var(--text);
+}
+
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
