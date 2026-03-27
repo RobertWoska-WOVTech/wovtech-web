@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Log management | WOV Tech</title>
   <meta name="description" content="Log management pre infra a aplikácie: zber, normalizácia, retencia a vyhľadávanie logov pre rýchly triage a audit." />
-  <meta name="keywords" content="IT služby, cloud, monitoring, zálohovanie, DNS DHCP, DDI IPAM, NTP, log management" />
+  <meta name="keywords" content="log management, ELK stack, OpenSearch, centralized logging, log analysis, SIEM, infrastructure observability" />
   <meta name="robots" content="index,follow,noarchive" />
   <link rel="canonical" href="https://wovtech.sk/sluzby/log-management.html" />
 
@@ -78,7 +78,68 @@
     </div>
 
     <div class="card pad">
-      <h2>Súvisiace články</h2>
+      <h2>Prečo je to dôležité</h2>
+      <p>
+        Logy obsahujú podrobný záznam čo sa stalo v systéme. Bez nich je nemožné vyriešiť incidenty,
+        audit bezpečnosti, či pochopiť prečo aplikácia zlyháva.
+      </p>
+      <p>
+        <b>Príklady:</b> Zistenie bezpečnostného incidentu (kto sa prihlasoval a kedy?),
+        debugging aplikačnej chyby (čo sa stalo pred pádom?), compliance audit (máme dôkaz?).
+      </p>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Čo to zahŕňa</h2>
+      <ul class=\"list\">
+        <li><b>Ingestion:</b> zbieranie logov zo serverov, aplikácií, siete</li>
+        <li><b>Indexovanie:</b> spracovanie a uskladnenie v priehliadnom formáte</li>
+        <li><b>Vyhľadávanie:</b> rýchle nájdenie relevantných logov (Elasticsearch, OpenSearch)</li>
+        <li><b>Vyhľadávanie:</b> dashboards, alerting na log patterns</li>
+        <li><b>Retention:</b> ako dlho držíme logy a kto k nim má prístup</li>
+      </ul>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Typické problémy bez log managementu</h2>
+      <ul class=\"list\">
+        <li><b>Strátené logy:</b> bez centralizácie = všetci vedia kde, keď sú potrebné</li>
+        <li><b>Bez kontextu:</b> máte logy, ale nejdete ich prečítať (slabý format, bez correlation IDs)</li>
+        <li><b>bez možnosti auditu:</b> kto a kedy zmenil konfiguráciu? Bez centralizovaných logov = neviem.</li>
+        <li><b>Compliance:</b> audit vás pýta kde sú logy - bez nich = problém</li>
+      </ul>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Otázky, ktoré si trebavdpo</h2>
+      <p><b>Ako dlho by sommemal držať logy?</b></p>
+      <p>Závisí od compliance. Zvyčajne 30-90 dní online (rýchle vyhľadávanie), 1-2 roky v archive.</p>
+      <p><b>ELK vs OpenSearch vs Splunk?</b></p>
+      <p>ELK a OpenSearch sú open-source (lacnejšie), Splunk je drahší ale s viac features. Voľba podľa budget a zložitosti.</p>
+      <p><b>Ako elegantne sparsovať logy bez formátu?</b></p>
+      <p>Ako prvý krok si jasne definujte log format (JSON je najlepší). Potom parsovúť a strukturovať v ELK/OpenSearch.</p>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Ako pracujeme</h2>
+      <p>
+        <b>Assessment:</b> zistíme ako funguje vaše log management (alebo či vôbec existuje).
+      </p>
+      <p>
+        <b>Návrh:</b> architektúra, retention, alerting, compliance requirements.
+      </p>
+      <p>
+        <b>Setup &amp; Integration:</b> ELK/OpenSearch deployment, log ingestion, dashboards, alerting.
+      </p>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Kontakt</h2>
+      <p>
+        Ak chcete nastaviť centralizovaný log management alebo vylepšiť existujúci,
+        <a href=\"/kontakt.html\"><b>ozvite sa nám</b></a>.
+      </p>
+    </div>
       <ul class="list">
         <li><a href="/checklisty/log-management.html">Log management: čo si premyslieť</a></li>
         <li><a href="/navrh-infrastruktury/monitoring-vs-logy.html">Monitoring vs logy</a></li>

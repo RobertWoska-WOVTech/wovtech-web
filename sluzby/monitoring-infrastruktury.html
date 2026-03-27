@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Monitoring infraštruktúry | WOV Tech</title>
   <meta name="description" content="Monitoring serverov a zariadení: metriky, alerty a dashboardy, ktoré znižujú šum a vedú k rýchlej reakcii." />
-  <meta name="keywords" content="IT služby, cloud, monitoring, zálohovanie, DNS DHCP, DDI IPAM, NTP, log management" />
+  <meta name="keywords" content="infrastructure monitoring, server monitoring, network monitoring, system observability, uptime monitoring, alerting" />
   <meta name="robots" content="index,follow,noarchive" />
   <link rel="canonical" href="https://wovtech.sk/sluzby/monitoring-infrastruktury.html" />
 
@@ -78,7 +78,68 @@
     </div>
 
     <div class="card pad">
-      <h2>Súvisiace články</h2>
+      <h2>Prečo je to dôležité</h2>
+      <p>
+        Bez monitoringu neviete čo sa deje v produkcii. Problémy zistíte len od zákazníkov.
+        Dobrý monitoring vám umožní problémy odhaliť a vyriešiť skôr, ako trápia používateľov.
+      </p>
+      <p>
+        <b>Príklady:</b> Disk je 90% plný (až sa zaplní na 100% a padá aplikácia),
+        latencia aplikácie je vysoká (bez upozornenia), CPU je na 95% (riziká pre stability).
+      </p>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Čo typicky pracujeme s</h2>
+      <ul class=\"list\">
+        <li><b>Systémové metriky:</b> CPU, RAM, disk, network bandwidth, latencia</li>
+        <li><b>HTTP/API monitoring:</b> status, response time, availability</li>
+        <li><b>Application monitoring:</b> error rates, responsiveness, transaction tracing</li>
+        <li><b>Alerting:</b> pravidlá, eskalácia, integrácia (email, Slack, atď.)</li>
+        <li><b>Visualizácia:</b> dashboards, reporting, trend analysis</li>
+      </ul>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Typické scenáre</h2>
+      <ul class=\"list\">
+        <li><b>Setup:</b> vybavenie serverov monitoring agentami, konfigurácia metrík</li>
+        <li><b>Upgrade:</b> z jednoduché monitoring na kompletný stack (Prometheus, Grafana, ...)</li>
+        <li><b>Maintenance:</b> tune alertov, cleanup starých dát, optimalizácia</li>
+        <li><b>Troubleshooting:</b> prečo aplikácia padá, kde je bottleneck</li>
+      </ul>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Často kladené otázky</h2>
+      <p><b>Koľko alertov by som mal mať?</b></p>
+      <p>Menej ako si myslíte. V ideáli <b>5-10 kritických alertov</b> ktoré vážne riešite. Viac = ignorujete ich.</p>
+      <p><b>Ako nastaviť prahové hodnoty?</b></p>
+      <p>Na základe histórie a business kritérií. CPU 80% môže byť normal, ale na vašom serveri = riziko.</p>
+      <p><b>Ako sa monitoring mení s cloudom?</b></p>
+      <p>CloudWatch (AWS), Stackdriver (GCP), Azure Monitor. Princípy sú rovnaké, ale integrujete natívne nástroje.</p>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Ako pracujeme</h2>
+      <p>
+        <b>Audit:</b> zistíme čo máte, čo vám chýba, čo máte zle.
+      </p>
+      <p>
+        <b>Návrh:</b> metriky, alerting stratégia, stack (Prometheus, Grafana, ELK, ...).
+      </p>
+      <p>
+        <b>Setup &amp; Optimization:</b> konfigurácia, integrácia, školenie vášho tímu.
+      </p>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Kontakt</h2>
+      <p>
+        Ak chcete nastaviť alebo vylepšiť monitoring vašej infraštruktúry,
+        <a href=\"/kontakt.html\"><b>ozvite sa nám</b></a>.
+      </p>
+    </div>
       <ul class="list">
         <li><a href="/checklisty/monitoring-infrastruktury.html">Monitoring: čo si premyslieť</a></li>
         <li><a href="/navrh-infrastruktury/monitoring-vs-logy.html">Monitoring vs logy</a></li>

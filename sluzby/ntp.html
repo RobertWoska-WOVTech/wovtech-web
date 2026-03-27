@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NTP – časová infraštruktúra | WOV Tech</title>
   <meta name="description" content="Návrh NTP a časovej infraštruktúry: zdroje času, redundancia, monitoring driftu a bezpečná synchronizácia." />
-  <meta name="keywords" content="IT služby, cloud, monitoring, zálohovanie, DNS DHCP, DDI IPAM, NTP, log management" />
+  <meta name="keywords" content="NTP, time synchronization, network time protocol, tier-0 infrastructure, time sources, clock synchronization" />
   <meta name="robots" content="index,follow,noarchive" />
   <link rel="canonical" href="https://wovtech.sk/sluzby/ntp.html" />
 
@@ -78,7 +78,68 @@
     </div>
 
     <div class="card pad">
-      <h2>Súvisiace články</h2>
+      <h2>Prečo je to dôležité</h2>
+      <p>
+        Presný čas je základom bezpečnosti (SSL certifikáty, Kerberos), auditovateľnosti a riešenia incidentov.
+        Ak čas nie je synchronizovaný, rýchlo sa objavujú problémy od autentifikácie až po zálohovanie.
+      </p>
+      <p>
+        <b>Príklady:</b> Expirované SSL certifikáty kvôli nesprávnemu času, zlyhanie Kerberosovej autentifikácie,
+        nesprávne logované incidenty, nesúlad pri audite.
+      </p>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Časti návrhu</h2>
+      <ul class=\"list\">
+        <li><b>Stratum:</b> výber spoľahlivých zdrojov času (tier-0, tier-1, tier-2)</li>
+        <li><b>Redundancia:</b> viacero NTP serverov, failover stratégia</li>
+        <li><b>Monitoring:</b> sledovanie driftu, upozornenia na anomálie</li>
+        <li><b>Bezpečnosť:</b> NTP Authentication, firewall pravidlá, DoS ochrana</li>
+        <li><b>Testy:</b> oveovanie synchronizácie v testovacích podmienkach</li>
+      </ul>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Typické problémy</h2>
+      <ul class=\"list\">
+        <li><b>Bez redundancie:</b> jeden NTP server = riziko, keď zlyhá</li>
+        <li><b>Špatná konfigurácia:</b> sieť, firewall blokuje,  rozdiely v OS</li>
+        <li><b>Bez monitoringu:</b> drift sa objaví len pri incidente</li>
+        <li><b>Bezpečnostné chyby:</b> otvorenosť na DDoS, ntpq dostupný verejne</li>
+      </ul>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Často kladené otázky</h2>
+      <p><b>Ako zlá je 5-minútová desynchronizácia?</b></p>
+      <p>Veľmi zlá. SSL zlyháva, Kerberos nefunguje, audit nie je vierohodný. Limit je zvyčajne 5 minút, ale v produkcii by to malo byť &lt;1 sekunda.</p>
+      <p><b>Potrebujeme GPS alebo Stratum-1 server?</b></p>
+      <p>Nie vždy. Ak máte prístup do internetu, können stovky verejných NTP serverov. GPS je užitočný pri off-grid prostrediach.</p>
+      <p><b>Ako sa testuje synchronizácia?</b></p>
+      <p>Príkazom <code>ntpq -p</code>, monitoring v Monitoring/Observability nástroji, pravidelný audit.</p>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Ako sa s tým pracuje</h2>
+      <p>
+        <b>Analýza:</b> skontrolujeme existujúce NTP prostredie, identifikujeme riziká (redundancia, monitoring, bezpečnosť).
+      </p>
+      <p>
+        <b>Návrh:</b> odporúčame architektúru, stratum, monitoring, postupy pri incidente.
+      </p>
+      <p>
+        <b>Stabilizácia:</b> pomáhame s konfiguráciou, testovaním, dokumentáciou a školením vášho tímu.
+      </p>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Kontakt</h2>
+      <p>
+        Ak riešite NTP infraštruktúru alebo si chcete overiť, či je správne nakonfigurovaná,
+        <a href=\"/kontakt.html\"><b>ozvite sa nám</b></a>.
+      </p>
+    </div>
       <ul class="list">
         <li><a href="/checklisty/ntp.html">NTP: čo si premyslieť</a></li>
         <li><a href="/navrh-infrastruktury/ntp-preco-je-cas-kriticky.html">Prečo je čas v infra kritický</a></li>

@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DDI: DNS/DHCP/IPAM | WOV Tech</title>
   <meta name="description" content="DDI (DNS/DHCP/IPAM): návrh a stabilizácia core služieb, ktoré ovplyvňujú dostupnosť, bezpečnosť a prevádzkovateľnosť siete." />
-  <meta name="keywords" content="IT služby, cloud, monitoring, zálohovanie, DNS DHCP, DDI IPAM, NTP, log management" />
+  <meta name="keywords" content="DNS, DHCP, IPAM, DDI, network infrastructure, IP address management, DNS security, network architecture" />
   <meta name="robots" content="index,follow,noarchive" />
   <link rel="canonical" href="https://wovtech.sk/sluzby/ddi-dns-dhcp-ipam.html" />
 
@@ -78,7 +78,68 @@
     </div>
 
     <div class="card pad">
-      <h2>Súvisiace články</h2>
+      <h2>Prečo je to dôležité</h2>
+      <p>
+        DNS, DHCP a IPAM sú služby, ktoré si väčšina ľudí neuvedomuje, kým nezlyhajú.
+        Keď nefungujú, počítače sa nemôžu pripojiť k sieti, aplikácie nejdú, rozborenie infraštruktúry je často značné.
+      </p>
+      <p>
+        <b>Príklady problémov:</b> Kolízie IP adries, rozdelené DNS zóny vedúce na konflikt, DHCP bez zálohy,
+        bez auditu kto zmeny robil.
+      </p>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Čo to zahŕňa</h2>
+      <ul class=\"list\">
+        <li><b>DNS architektúra:</b> authoritative servery, resolving, split-horizon, DNS security (DNSSEC, DoH)</li>
+        <li><b>DHCP:</b> scopes,  lease times, failover, DHCP snooping, bezpečnosť</li>
+        <li><b>IPAM:</b> centralizovaná správa IP adries, plánovanie, reporting</li>
+        <li><b>Integrácia:</b> s Active Directory, cloud, monitoring</li>
+        <li><b>Monitoring:</b> health checks, failover, audit zmien</li>
+      </ul>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Typické problémy</h2>
+      <ul class=\"list\">
+        <li><b>Bez redundancie:</b> jeden DNS/DHCP server = single point of failure</li>
+        <li><b>Nesprávny DHCP design:</b> scope kolízie, bez dokumentácie kto čo vlastní</li>
+        <li><b>DNS zóny:</b> split-brain alebo nesprávne delegácie vedúce na chyby v rezolúcii</li>
+        <li><b>Bez automácie:</b> manuálne zmeny, chyby, bez audit trail</li>
+      </ul>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Časté otázky</h2>
+      <p><b>Ako dlho trvá migrácia DNS serverov?</b></p>
+      <p>Závisí od veľkosti zón. Zvyčajne netreba prepínať naraz - TTL znížime, migrujeme záznam za záznamom, potom prepíname NS.</p>
+      <p><b>Ako riešiť DHCP failover?</b></p>
+      <p>Failover pair (ISC DHCP), alebo centralizovaný IPAM (Infoblox, Men &amp; Mice). Aspoň 2+1 redundancia.</p>
+      <p><b>Ako auditujem zmeny?</b></p>
+      <p>Audit trail z IPAM nástroja, change management proces, notifications na zmeny.</p>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Ako pracujeme</h2>
+      <p>
+        <b>Audit:</b> mapovanie existujúcej DNS, DHCP, IPAM architektúry, identifikácia rizík.
+      </p>
+      <p>
+        <b>Návrh:</b> redundancia, failover, monitoring, migračný plán.
+      </p>
+      <p>
+        <b>Migrácia &amp; Testing:</b> bezpečné presunúť bez downtime.
+      </p>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Kontakt</h2>
+      <p>
+        Ak riešite problémy s DNS, DHCP alebo IPAM, alebo chcete upratať a stabilizovať tieto služby,
+        <a href=\"/kontakt.html\"><b>ozvite sa nám</b></a>.
+      </p>
+    </div>
       <ul class="list">
         <li><a href="/checklisty/ddi-dns-dhcp-ipam.html">DDI: čo si premyslieť</a></li>
         <li><a href="/navrh-infrastruktury/networking-v-infra-navrhu.html">Networking v návrhu infra</a></li>

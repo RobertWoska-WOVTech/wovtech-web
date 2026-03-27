@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cloud ops (AWS/Azure/GCP) | WOV Tech</title>
   <meta name="description" content="Cloud ops pre AWS/Azure/GCP: štandardy, bezpečnosť, prístupy, IaC a stabilizácia prevádzky. Menej ručných zásahov, viac kontroly a opakovateľnosti." />
-  <meta name="keywords" content="IT služby, cloud, monitoring, zálohovanie, DNS DHCP, DDI IPAM, NTP, log management" />
+  <meta name="keywords" content="AWS, Azure, Google Cloud, cloud ops, cloud architecture, infrastructure as code, IaC, cloud security, Terraform" />
   <meta name="robots" content="index,follow,noarchive" />
   <link rel="canonical" href="https://wovtech.sk/sluzby/cloud-aws-azure.html" />
 
@@ -79,7 +79,68 @@
     </div>
 
     <div class="card pad">
-      <h2>Súvisiace články</h2>
+      <h2>Prečo je to dôležité</h2>
+      <p>
+        Cloud infraštruktúra môže byť enormne výkonná, ale aj enormne rizikovaná, ak nie je správne nastavená.
+        Bez dobrých štandardov veľmi rýchlo rastú náklady, bezpečnostné diery a technický dlh.
+      </p>
+      <p>
+        <b>Príklady problémov:</b> Zbytočne bežiace resursy, netesnosti v bezpečnosti (S3 buckety dostupné verejne),
+        nefungujúca disaster recovery, bez možnosti auditu zmien.
+      </p>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Čo to zahŕňa</h2>
+      <ul class=\"list\">
+        <li><b>Governance:</b> práva, role, politiky, tagging, billing kontrola</li>
+        <li><b>Security:</b> bezpečnosti siete, Identity & Access Management, encryption, compliance</li>
+        <li><b>Infrastructure as Code:</b> Terraform, CloudFormation, repeatable deployments</li>
+        <li><b>Monitoring & Observability:</b> CloudWatch, metriky, logy, alerting</li>
+        <li><b>Optimization:</b> náklady, výkon, utilizácia, autoscaling</li>
+      </ul>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Typické scenáre</h2>
+      <ul class=\"list\">
+        <li><b>Migrácia:</b> z on-prem do cloud (lift &amp; shift, refactor)</li>
+        <li><b>Hybrid:</b> prepojenie on-prem a cloud prostredia</li>
+        <li><b>Multi-cloud:</b> AWS a Azure zároveň, portability</li>
+        <li><b>Optimalizácia:</b> existujúci cloud je príliš drahý alebo nezabezpečený</li>
+      </ul>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Často kladené otázky</h2>
+      <p><b>Ako dlho trvá migrácia do cloud?</b></p>
+      <p>Závisí od veľkosti a zložitosti. Malá aplikácia: týždne. Veľký systém s dátami: mesiace. Plán zmien a testing sú kľúčové.</p>
+      <p><b>Je cloud lacnejší ako on-prem?</b></p>
+      <p>Zvyčajne áno na počiatku, ale bez dobrého monitoringu rastú náklady. Kľúč je optimalizácia a dobrá governance.</p>
+      <p><b>Ako zaistiť bezpečnosť?</b></p>
+      <p>Least privilege access, encryption, monitoring, compliance checks (CIS benchmarks). Pravidelný audit je povinný.</p>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Ako pracujeme</h2>
+      <p>
+        <b>Audit:</b> skontrolujeme vaše cloud prostredie, identifikujeme riziká a príležitosti na optimalizáciu.
+      </p>
+      <p>
+        <b>Návrh:</b> architektúra, security guardrails, cost optimization, disaster recovery.
+      </p>
+      <p>
+        <b>Implementácia:</b> helpers s IaC, automation, monitoring, runbooks.
+      </p>
+    </div>
+
+    <div class=\"card pad\">
+      <h2>Kontakt</h2>
+      <p>
+        Ak plánujete migráciu do cloud, optimalizujete existujúce prostredie alebo potrebujete bezpečný hybrid setup,
+        <a href=\"/kontakt.html\"><b>ozvite sa nám</b></a>.
+      </p>
+    </div>
       <ul class="list">
         <li><a href="/checklisty/cloud-aws-azure.html">Cloud: čo si premyslieť</a></li>
         <li><a href="/navrh-infrastruktury/pristupy-a-identita.html">Prístupy &amp; identita</a></li>
