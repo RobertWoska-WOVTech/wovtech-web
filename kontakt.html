@@ -31,6 +31,7 @@
   <meta name="theme-color" content="#0b1220" />
   <link rel="stylesheet" href="/assets/css/styles.min.css" />
   <link rel="stylesheet" href="/assets/css/webp.css" />
+  <link rel="stylesheet" href="/assets/css/contact-form.css" />
 </head>
 
 <body>
@@ -118,6 +119,64 @@
           </a>
 
         </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="card pad-lg">
+          <h2>Formulár na kontakt</h2>
+          <p style="margin-bottom: 18px;">Vyplňte formulár nižšie a my sa vám ozveme čo najskôr.</p>
+
+          <form id="contact-form" class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Meno a priezvisko <span class="required">*</span></label>
+                <input type="text" id="name" name="name" placeholder="Ján Novák" required />
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail <span class="required">*</span></label>
+                <input type="email" id="email" name="email" placeholder="vasa.adresa@firma.sk" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Telefón (voliteľne)</label>
+                <input type="tel" id="phone" name="phone" placeholder="+421 950 123 456" />
+              </div>
+              <div class="form-group">
+                <label for="company">Názov firmy <span class="required">*</span></label>
+                <input type="text" id="company" name="company" placeholder="Názov s.r.o." required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="service">Typ služby</label>
+              <select id="service" name="service">
+                <option value="">-- Vyberte typ --</option>
+                <option value="navrh-infrastruktury">Návrh infraštruktúry</option>
+                <option value="cloud">Cloud a hybridné riešenia</option>
+                <option value="monitoring">Monitoring a logy</option>
+                <option value="zalohy">Zálohovanie a obnova</option>
+                <option value="stabilizacia">Stabilizácia IT prostredia</option>
+                <option value="ine">Iné - zostane vidieť v správe</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Popis situácie <span class="required">*</span></label>
+              <textarea id="message" name="message" placeholder="Stručne opíšte vašu situáciu, čo riešite a čo by ste chceli vyriešiť..." required></textarea>
+            </div>
+
+            <div class="form-checkbox">
+              <input type="checkbox" id="privacy" name="privacy" required />
+              <label for="privacy">Súhlasím s <a href="/ochrana-osobnych-udajov.html">ochranou osobných údajov</a> <span class="required">*</span></label>
+            </div>
+
+            <button type="submit" class="form-submit">Odoslať správu</button>
+          </form>
+        </div>
       </div>
     </section>
 
@@ -322,6 +381,8 @@
     ]
   }
   </script>
+
+  <script src="/assets/js/contact-form.js"></script>
 
 </body>
 </html>
