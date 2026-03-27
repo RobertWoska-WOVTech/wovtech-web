@@ -2,6 +2,10 @@
   # Enable rewrite engine
   RewriteEngine On
   RewriteBase /
+  
+  # Presmerovanie HTTP → HTTPS (SSL/TLS)
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
   # Podávaj WebP obrázky namiesto PNG/JPG, ak je podporovaný
   RewriteCond %{HTTP_ACCEPT} image/webp
@@ -10,8 +14,41 @@
   RewriteRule ^(.+)\.(png|jpg|jpeg)$ %{REQUEST_FILENAME}.webp [QSA,T=image/webp,L]
 </IfModule>
 
+# Vypni zoznam súborov v zložkách (Directory Listing)
+<IfModule mod_autoindex.c>
+  Options -Indexes
+</IfModule>
+
 <IfModule mod_headers.c>
-  # Nastav Cache-Control headers
+  # ============================================
+  # BEZPEČNOSTNÉ HEADERY (Security Headers)
+  # ============================================
+  
+  # HSTS - Nútenie HTTPS na 1 rok (31536000 sekúnd)
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  
+  # Zákaz framing (clickjacking ochrana)
+  Header set X-Frame-Options "SAMEORIGIN"
+  
+  # Zabrániť MIME sniffing
+  Header set X-Content-Type-Options "nosniff"
+  
+  # XSS ochrana
+  Header set X-XSS-Protection "1; mode=block"
+  
+  # Referrer politika - odošli len minimálne info
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  
+  # Permissions Policy - vypni nebezpečné API
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
+  
+  # Content Security Policy - povolenie iba svojich resursov
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' formspree.io www.googletagmanager.com www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' formspree.io www.google-analytics.com; frame-ancestors 'self'"
+  
+  # ============================================
+  # CACHE CONTROL HEADERY
+  # ============================================
+  
   # HTML - cache 1 deň
   <FilesMatch "\.html?$">
     Header set Cache-Control "max-age=86400, must-revalidate"
