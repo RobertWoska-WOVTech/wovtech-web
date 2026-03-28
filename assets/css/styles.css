@@ -883,3 +883,15 @@ main#content a.cta.small::after{
     transform:none !important;
   }
 }
+.section .card .list a{
+  color:#9ec5ff;
+  font-weight:700;
+  text-decoration:underline;
+  text-decoration-color:rgba(158,197,255,.45);
+  text-underline-offset:3px;
+}
+
+.section .card .list a:hover{
+  color:#c7ddff;
+  text-decoration-color:rgba(199,221,255,.8);
+}
