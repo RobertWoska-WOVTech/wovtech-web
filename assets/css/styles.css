@@ -427,6 +427,19 @@ main#content > *{
   opacity: 1;
 }
 
+.card.related-links .list a {
+  color: #9ec5ff;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(158, 197, 255, 0.45);
+  text-underline-offset: 3px;
+}
+
+.card.related-links .list a:hover {
+  color: #c7ddff;
+  text-decoration-color: rgba(199, 221, 255, 0.8);
+}
+
 .hr{
   height:1px;
   background: rgba(255,255,255,.14);
