@@ -30,6 +30,22 @@
   <meta name="theme-color" content="#0b1220" />
   <link rel="stylesheet" href="/assets/css/styles.min.css" />
   <link rel="stylesheet" href="/assets/css/webp.css" />
+
+  <style>
+    .article-links a {
+      color: #9ec5ff !important;
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-color: rgba(158, 197, 255, 0.45);
+      text-underline-offset: 3px;
+      transition: color .15s ease, text-decoration-color .15s ease;
+    }
+
+    .article-links a:hover {
+      color: #c7ddff !important;
+      text-decoration-color: rgba(199, 221, 255, 0.85);
+    }
+  </style>
 </head>
 <body>
   <script src="/assets/js/webp-detect.js"></script>
@@ -111,7 +127,7 @@
 
     <section class="section">
       <div class="container two-col">
-        <div class="card pad">
+        <div class="card pad article-links">
           <h2>Základné témy k návrhu infraštruktúry</h2>
           <p>Články, ktoré pomáhajú pochopiť dôležité oblasti návrhu a prevádzky IT prostredia.</p>
 
@@ -126,7 +142,7 @@
           </ul>
         </div>
 
-        <div class="card pad">
+        <div class="card pad article-links">
           <h2>Checklisty k vybraným oblastiam</h2>
           <p>Praktické kontrolné zoznamy, ktoré pomáhajú overiť, či sú základné oblasti infraštruktúry pokryté správne.</p>
 
